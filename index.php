@@ -20,6 +20,7 @@
                 <input type="password">
             </div>
             <button>Entrar</button>
+            <a href="cadastro.php"><button>Cadastrar</button></a>
         </div>
     </main>
 </body>
