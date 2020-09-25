@@ -31,27 +31,23 @@
             </a>
 
             <ul class="right hide-on-med-and-down ">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Video</a></li>
-                <li><a href="#">Service</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#">Produtos</a></li>
+                <li><a href="#">Promoções</a></li>
+                <li><a href="#">Lançamentos</a></li>
+                <li><a href="#">Pesquisa</a></li>
+                <li><a href="#">Entrar</a></li>
             </ul>
         </div>
     </nav>
 
 
     <ul class="sidenav" id="mobile-nav">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Video</a></li>
-        <li><a href="#">Service</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="#"><i class="material-icons">local_grocery_store</i>Produtos</a></li>
+        <li><a href="#"><i class="material-icons">local_offer</i>Promocoes</a></li>
+        <li><a href="#"><i class="material-icons">whatshot</i>Lançamentos</a></li>
+        <li><a href="#"><i class="material-icons">search</i>Pesquisa</a></li>
+        <li><a href="#"><i class="material-icons">person</i>Entrar</a></li>
     </ul>
-
-    <main>
-        teste
-    </main>
 
 </body>
 
