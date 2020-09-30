@@ -49,6 +49,13 @@
         <li><a href="#"><i class="material-icons">person</i>Entrar</a></li>
     </ul>
 
+            <a class="carousel-item" href="#one!"><img src="https://lorempixel.com/800/400/food/1"></a>
+            <a class="carousel-item" href="#two!"><img src="https://lorempixel.com/800/400/food/2"></a>
+            <a class="carousel-item" href="#three!"><img src="https://lorempixel.com/800/400/food/3"></a>
+            <a class="carousel-item" href="#four!"><img src="https://lorempixel.com/800/400/food/4"></a>
+        </div>
+    </main>
+
 </body>
 
 </html>
