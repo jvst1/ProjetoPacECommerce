@@ -18,28 +18,35 @@
     $(document).ready(function() {
         $('.sidenav').sidenav();
     });
+    $(document).ready(function() {
+        $('.carousel').carousel();
+    });
+    $(document).ready(function() {
+        $('.fixed-action-btn').floatingActionButton();
+    });
+    $('.carousel.carousel-slider').carousel({
+        fullWidth: true
+    });
 </script>
 
 <body>
 
-    <nav class="blue" style="padding:0px 10px; position: fixed;">
+    <nav class="nav-extended">
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo">Pac2</a>
+            <a href="#" class="brand-logo"><img src="images/logo.png" alt=""></a>
 
             <a href="#" class="sidenav-trigger" data-target="mobile-nav">
                 <i class="material-icons">menu</i>
             </a>
 
-            <ul class="right hide-on-med-and-down ">
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="#">Produtos</a></li>
-                <li><a href="#">Promoções</a></li>
+                <li><a href="#">Promoção</a></li>
                 <li><a href="#">Lançamentos</a></li>
-                <li><a href="#">Pesquisa</a></li>
-                <li><a href="#">Entrar</a></li>
+                <li><a href="#"><i class="dropdown-trigger material-icons" data-target='dropdown1'>person</i></a></li>
             </ul>
         </div>
     </nav>
-
 
     <ul class="sidenav" id="mobile-nav">
         <li><a href="#"><i class="material-icons">local_grocery_store</i>Produtos</a></li>
@@ -49,10 +56,22 @@
         <li><a href="#"><i class="material-icons">person</i>Entrar</a></li>
     </ul>
 
-            <a class="carousel-item" href="#one!"><img src="https://lorempixel.com/800/400/food/1"></a>
-            <a class="carousel-item" href="#two!"><img src="https://lorempixel.com/800/400/food/2"></a>
-            <a class="carousel-item" href="#three!"><img src="https://lorempixel.com/800/400/food/3"></a>
-            <a class="carousel-item" href="#four!"><img src="https://lorempixel.com/800/400/food/4"></a>
+    <main>
+        <div class="carousel carousel-slider carousel-size">
+            <a class="carousel-item" href="#one!"><img src="https://lorempixel.com/800/900/food/1"></a>
+            <a class="carousel-item" href="#two!"><img src="https://lorempixel.com/800/900/food/2"></a>
+            <a class="carousel-item" href="#three!"><img src="https://lorempixel.com/800/900/food/3"></a>
+            <a class="carousel-item" href="#four!"><img src="https://lorempixel.com/800/900/food/4"></a>
+        </div>
+
+        <div class="fixed-action-btn">
+            <a class="btn-floating btn-large red">
+                <i class="large material-icons">whatshot</i>
+            </a>
+            <ul>
+                <li><a class="btn-floating red"><i class="material-icons">local_grocery_store</i></a></li>
+                <li><a class="btn-floating yellow darken-1"><i class="material-icons">local_offer</i></a></li>
+            </ul>
         </div>
     </main>
 

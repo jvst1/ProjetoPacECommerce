@@ -5,6 +5,38 @@
     font-family: 'Poppins', sans-serif;
 }
 
+:root {
+    --main-bg-color: red;
+}
+
 body {
     background-image: url("../images/background.jpg");
 }
+
+nav {
+    background-color: var(--main-bg-color);
+    padding: 0px 20px;
+}
+
+.carousel-size{
+    margin-top: 50px;
+    border-radius: 100px 0 100px 0;
+    border: 2px solid var(--main-bg-color);
+    width: 90vw;
+    height: 30vh;
+}
+
+main{
+    display: flex;
+    justify-content: center;
+}
+
+ul li a{
+    font-size: 1.4rem;
+}
+
+@media screen and (min-width: 998px) {
+    .carousel-size{
+        height: 50vh;
+    }
+  }
