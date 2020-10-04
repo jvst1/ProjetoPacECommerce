@@ -1,0 +1,39 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-image: url("../images/background.jpg");
+}
+.container{
+    margin: auto;
+    width: 55vh;
+    height: 100vh;
+    justify-content: center;
+    align-content: center;
+}
+form{
+    padding-top: 10vh;
+}
+label{
+    font-size: 20px;
+    color: #808080;
+}
+.btn{
+    margin-left: 16.5vh;
+}
+h5{
+    text-align: center;
+    color: #808080;
+}
+.inputdate{
+    color:#BEBEBE;
+}
+.erro{
+    color:red;
+    z-index: 50;
+    padding-top: 100px;
+}
