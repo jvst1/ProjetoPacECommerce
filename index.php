@@ -35,8 +35,9 @@
                 <li><a href="#">Produtos</a></li>
                 <li><a href="#">Promoção</a></li>
                 <li><a href="#">Lançamentos</a></li>
-                <li><a class='dropdown-trigger' href='#'><i class="dropdown-trigger material-icons">person</i></a></li>
-                <li><a class='dropdown-trigger' href='#'><i class="dropdown-trigger material-icons">local_grocery_store</i></a></li>
+                <li><a href='telacadastro.php'>Cadastrar-se</a></li>
+                <li><a href='telalogin.php'>Entrar</a></li>
+                <li><a href='#'><i class="material-icons">local_grocery_store</i></a></li>
             </ul>
         </div>
     </nav>
@@ -51,58 +52,185 @@
     <main>
 
         <section class="landing-page">
-
+            <h2>Promoções da Semana</h2>
+            <div class="list-products">
+                <div class="card spacing">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/600">
+                        <span class="card-title">Produto Teste</span>
+                        <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
+                    </div>
+                    <div class="card-content">
+                        <p class="discount">R$ 250,99</p>
+                        <h5>Por: 199,99</h5>
+                    </div>
+                </div>
+                <div class="card spacing">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/600">
+                        <span class="card-title">Produto Teste</span>
+                        <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
+                    </div>
+                    <div class="card-content">
+                        <p class="discount">R$ 250,99</p>
+                        <h5>Por: 199,99</h5>
+                    </div>
+                </div>
+                <div class="card spacing">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/600">
+                        <span class="card-title">Produto Teste</span>
+                        <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
+                    </div>
+                    <div class="card-content">
+                        <p class="discount">R$ 250,99</p>
+                        <h5>Por: 199,99</h5>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <h2>Promoções da Semana</h2>
-        <div class="list-products">
-            <div class="card spacing">
-                <div class="card-image">
-                    <img src="https://picsum.photos/600">
-                    <span class="card-title">Produto Teste</span>
-                    <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
+        <section class="second-page">
+            <h2 class="product-text">Produtos</h2>
+            <div class="list-products">
+                <div class="card spacing">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/600">
+                        <span class="card-title">Produto Teste</span>
+                        <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
+                    </div>
+                    <div class="card-content">
+                        <p class="discount">R$ 250,99</p>
+                        <h5>Por: 199,99</h5>
+                    </div>
                 </div>
-                <div class="card-content">
-                    <p class="discount">R$ 250,99</p>
-                    <h5>Por: 199,99</h5>
+                <div class="card spacing">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/600">
+                        <span class="card-title">Produto Teste</span>
+                        <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
+                    </div>
+                    <div class="card-content">
+                        <p class="discount">R$ 250,99</p>
+                        <h5>Por: 199,99</h5>
+                    </div>
+                </div>
+                <div class="card spacing">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/600">
+                        <span class="card-title">Produto Teste</span>
+                        <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
+                    </div>
+                    <div class="card-content">
+                        <p class="discount">R$ 250,99</p>
+                        <h5>Por: 199,99</h5>
+                    </div>
+                </div>
+                <div class="card spacing">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/600">
+                        <span class="card-title">Produto Teste</span>
+                        <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
+                    </div>
+                    <div class="card-content">
+                        <p class="discount">R$ 250,99</p>
+                        <h5>Por: 199,99</h5>
+                    </div>
                 </div>
             </div>
-            <div class="card spacing">
-                <div class="card-image">
-                    <img src="https://picsum.photos/600">
-                    <span class="card-title">Produto Teste</span>
-                    <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
+            <div class="list-products">
+                <div class="card spacing">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/600">
+                        <span class="card-title">Produto Teste</span>
+                        <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
+                    </div>
+                    <div class="card-content">
+                        <p class="discount">R$ 250,99</p>
+                        <h5>Por: 199,99</h5>
+                    </div>
                 </div>
-                <div class="card-content">
-                    <p class="discount">R$ 250,99</p>
-                    <h5>Por: 199,99</h5>
+                <div class="card spacing">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/600">
+                        <span class="card-title">Produto Teste</span>
+                        <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
+                    </div>
+                    <div class="card-content">
+                        <p class="discount">R$ 250,99</p>
+                        <h5>Por: 199,99</h5>
+                    </div>
+                </div>
+                <div class="card spacing">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/600">
+                        <span class="card-title">Produto Teste</span>
+                        <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
+                    </div>
+                    <div class="card-content">
+                        <p class="discount">R$ 250,99</p>
+                        <h5>Por: 199,99</h5>
+                    </div>
+                </div>
+                <div class="card spacing">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/600">
+                        <span class="card-title">Produto Teste</span>
+                        <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
+                    </div>
+                    <div class="card-content">
+                        <p class="discount">R$ 250,99</p>
+                        <h5>Por: 199,99</h5>
+                    </div>
                 </div>
             </div>
-            <div class="card spacing">
-                <div class="card-image">
-                    <img src="https://picsum.photos/600">
-                    <span class="card-title">Produto Teste</span>
-                    <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
+            <div class="list-products">
+                <div class="card spacing">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/600">
+                        <span class="card-title">Produto Teste</span>
+                        <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
+                    </div>
+                    <div class="card-content">
+                        <p class="discount">R$ 250,99</p>
+                        <h5>Por: 199,99</h5>
+                    </div>
                 </div>
-                <div class="card-content">
-                    <p class="discount">R$ 250,99</p>
-                    <h5>Por: 199,99</h5>
+                <div class="card spacing">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/600">
+                        <span class="card-title">Produto Teste</span>
+                        <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
+                    </div>
+                    <div class="card-content">
+                        <p class="discount">R$ 250,99</p>
+                        <h5>Por: 199,99</h5>
+                    </div>
+                </div>
+                <div class="card spacing">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/600">
+                        <span class="card-title">Produto Teste</span>
+                        <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
+                    </div>
+                    <div class="card-content">
+                        <p class="discount">R$ 250,99</p>
+                        <h5>Por: 199,99</h5>
+                    </div>
+                </div>
+                <div class="card spacing">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/600">
+                        <span class="card-title">Produto Teste</span>
+                        <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
+                    </div>
+                    <div class="card-content">
+                        <p class="discount">R$ 250,99</p>
+                        <h5>Por: 199,99</h5>
+                    </div>
                 </div>
             </div>
-            <div class="card spacing">
-                <div class="card-image">
-                    <img src="https://picsum.photos/600">
-                    <span class="card-title">Produto Teste</span>
-                    <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
-                </div>
-                <div class="card-content">
-                    <p class="discount">De: R$ 250,99</p>
-                    <h5>Por: 199,99</h5>
-                </div>
-            </div>
-        </div>
-
-        </div>
+        </section>
 
         <div class="fixed-action-btn">
             <a class="btn-floating btn-large dark-mode">

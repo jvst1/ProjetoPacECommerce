@@ -86,7 +86,7 @@ textarea {
         transition: transform .2s;
     }
     .spacing:hover {
-        transform: scale(1.1);
+        transform: scale(1.05);
     }
     .fixed-action-btn {
         display: none;
@@ -96,7 +96,7 @@ textarea {
         margin-bottom: 10px;
     }
     .landing-page {
-        height: 90vh;
+        height: 100vh;
     }
     textarea {
         resize: vertical;
