@@ -50,7 +50,15 @@
     </ul>
 
     <main>
-
+        <section class="searchBar">
+            <form>
+                <div class="input-field">
+                    <input id="search" type="search" placeholder="Pesquise..." required>
+                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                    <i class="material-icons right">close</i>
+                </div>
+            </form>
+        </section>
         <section class="landing-page">
             <h2>Promoções da Semana</h2>
             <div class="list-products">
