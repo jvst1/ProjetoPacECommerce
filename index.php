@@ -15,17 +15,9 @@
 </head>
 
 <script>
-    $(document).ready(function() {
+    $(function() {
         $('.sidenav').sidenav();
-    });
-    $(document).ready(function() {
-        $('.carousel').carousel();
-    });
-    $(document).ready(function() {
         $('.fixed-action-btn').floatingActionButton();
-    });
-    $('.carousel.carousel-slider').carousel({
-        fullWidth: true
     });
 </script>
 
@@ -33,7 +25,7 @@
 
     <nav class="nav-extended">
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo"><img src="images/logo.png" alt=""></a>
+            <a href="#" class="brand-logo">ECommerce</a>
 
             <a href="#" class="sidenav-trigger" data-target="mobile-nav">
                 <i class="material-icons">menu</i>
@@ -43,7 +35,8 @@
                 <li><a href="#">Produtos</a></li>
                 <li><a href="#">Promoção</a></li>
                 <li><a href="#">Lançamentos</a></li>
-                <li><a href="#"><i class="dropdown-trigger material-icons" data-target='dropdown1'>person</i></a></li>
+                <li><a class='dropdown-trigger' href='#'><i class="dropdown-trigger material-icons">person</i></a></li>
+                <li><a class='dropdown-trigger' href='#'><i class="dropdown-trigger material-icons">local_grocery_store</i></a></li>
             </ul>
         </div>
     </nav>
@@ -53,27 +46,107 @@
         <li><a href="#"><i class="material-icons">local_offer</i>Promocoes</a></li>
         <li><a href="#"><i class="material-icons">whatshot</i>Lançamentos</a></li>
         <li><a href="#"><i class="material-icons">search</i>Pesquisa</a></li>
-        <li><a href="#"><i class="material-icons">person</i>Entrar</a></li>
     </ul>
 
     <main>
-        <div class="carousel carousel-slider carousel-size">
-            <a class="carousel-item" href="#one!"><img src="https://lorempixel.com/800/900/food/1"></a>
-            <a class="carousel-item" href="#two!"><img src="https://lorempixel.com/800/900/food/2"></a>
-            <a class="carousel-item" href="#three!"><img src="https://lorempixel.com/800/900/food/3"></a>
-            <a class="carousel-item" href="#four!"><img src="https://lorempixel.com/800/900/food/4"></a>
+
+        <section class="landing-page">
+
+        </section>
+
+        <h2>Promoções da Semana</h2>
+        <div class="list-products">
+            <div class="card spacing">
+                <div class="card-image">
+                    <img src="https://picsum.photos/600">
+                    <span class="card-title">Produto Teste</span>
+                    <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
+                </div>
+                <div class="card-content">
+                    <p class="discount">R$ 250,99</p>
+                    <h5>Por: 199,99</h5>
+                </div>
+            </div>
+            <div class="card spacing">
+                <div class="card-image">
+                    <img src="https://picsum.photos/600">
+                    <span class="card-title">Produto Teste</span>
+                    <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
+                </div>
+                <div class="card-content">
+                    <p class="discount">R$ 250,99</p>
+                    <h5>Por: 199,99</h5>
+                </div>
+            </div>
+            <div class="card spacing">
+                <div class="card-image">
+                    <img src="https://picsum.photos/600">
+                    <span class="card-title">Produto Teste</span>
+                    <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
+                </div>
+                <div class="card-content">
+                    <p class="discount">R$ 250,99</p>
+                    <h5>Por: 199,99</h5>
+                </div>
+            </div>
+            <div class="card spacing">
+                <div class="card-image">
+                    <img src="https://picsum.photos/600">
+                    <span class="card-title">Produto Teste</span>
+                    <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
+                </div>
+                <div class="card-content">
+                    <p class="discount">De: R$ 250,99</p>
+                    <h5>Por: 199,99</h5>
+                </div>
+            </div>
+        </div>
+
         </div>
 
         <div class="fixed-action-btn">
-            <a class="btn-floating btn-large red">
+            <a class="btn-floating btn-large dark-mode">
                 <i class="large material-icons">whatshot</i>
             </a>
             <ul>
-                <li><a class="btn-floating red"><i class="material-icons">local_grocery_store</i></a></li>
-                <li><a class="btn-floating yellow darken-1"><i class="material-icons">local_offer</i></a></li>
+                <li><a class="btn-floating dark-mode"><i class="material-icons">local_grocery_store</i></a></li>
+                <li><a class="btn-floating dark-mode darken-1"><i class="material-icons">local_offer</i></a></li>
             </ul>
         </div>
     </main>
+
+    <footer class="page-footer dark-mode">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Contate a loja através do e-mail</h5>
+                    <p class="grey-text text-lighten-4">suporte@gmail.com</p>
+                    <form action="#">
+                        <br>
+                        <textarea name="message" rows="10" cols="30" placeholder="Informe sua mensagem aqui"></textarea>
+                        <br><br>
+                        <input class="btn light-mode btn-hover" type="submit" />
+                    </form>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h4 class="white-text">Desenvolvedores</h4>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="#!">Frederico Stein</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Gustavo Bosco</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Matheus Tambosi</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">João Tomio</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">João Belli</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Vitor Adriel</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2020 Senaizada ECommerce
+            </div>
+        </div>
+    </footer>
 
 </body>
 
