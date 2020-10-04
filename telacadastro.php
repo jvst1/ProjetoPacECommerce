@@ -44,7 +44,7 @@
                 <input type="text" name="cpf" id="cpf" placeholder="000.000.000-00" onkeypress="$(this).mask('000.000.000-00');">
                 <label>Número de Telefone*</label>
                 <input type="text" name="telefone" id="telefone" placeholder="(00) 0 0000-0000" onkeypress="$(this).mask('(00) 0 0000-0000')">
-                <label>Dados de Endereço*</label>
+                <h5>Dados de Endereço*</h5>
                 <br>
                 <label>Nome da Rua*</label>
                 <input type="text" name="endereco" id="endereco" placeholder="Nome da rua">
@@ -94,7 +94,7 @@
                 <input type="password" name="senha" id="senha" placeholder="Senha">
                 <label>Confirme sua Senha*</label>
                 <input type="password" name="senhaconfirm" id="senhaconfirm" placeholder="Senha">
-                <button type="submit" class="btn waves-effect waves-light btn-large dark-mode">Cadastrar</button>
+                <button type="submit" class="btn waves-effect waves-light btn-large dark-mode spacing">Cadastrar</button>
             </form>
         </div>
     </div>
