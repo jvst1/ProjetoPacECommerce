@@ -11,7 +11,6 @@ include 'conexao.php';
     $sql = "SELECT Cliente_Email FROM clientes WHERE Cliente_Email = '$email' AND Cliente_Senha = '$senha'";
     $condicao = mysqli_query($con, $sql);
     if(mysqli_num_rows($condicao) > 0){
-        echo "andreia da o cu";
          $_SESSION['login'] = $email;
          $_SESSION['txtsenha'] = $senha;
          if(isset($_SESSION['login'])){

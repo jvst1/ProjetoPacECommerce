@@ -54,7 +54,7 @@
                 <input type="text" name="cidade" id="cidade" placeholder="Cidade">
                 <label>Estado*</label>
                 <div class="input-field col s12">
-                    <select>
+                    <select name="estado">
                         <option value="" disabled selected>Escolha seu Estado</option>
                         <option value="AC">Acre</option>
                         <option value="AL">Alagoas</option>

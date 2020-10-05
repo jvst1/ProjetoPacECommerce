@@ -100,144 +100,46 @@
 
         <section class="second-page">
             <h2 class="product-text">Produtos</h2>
-            <div class="list-products">
-                <div class="card spacing">
-                    <div class="card-image">
-                        <img src="https://picsum.photos/600">
-                        <span class="card-title">Produto Teste</span>
-                        <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
-                    </div>
-                    <div class="card-content">
-                        <p class="discount">R$ 250,99</p>
-                        <h5>Por: 199,99</h5>
-                    </div>
-                </div>
-                <div class="card spacing">
-                    <div class="card-image">
-                        <img src="https://picsum.photos/600">
-                        <span class="card-title">Produto Teste</span>
-                        <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
-                    </div>
-                    <div class="card-content">
-                        <p class="discount">R$ 250,99</p>
-                        <h5>Por: 199,99</h5>
-                    </div>
-                </div>
-                <div class="card spacing">
-                    <div class="card-image">
-                        <img src="https://picsum.photos/600">
-                        <span class="card-title">Produto Teste</span>
-                        <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
-                    </div>
-                    <div class="card-content">
-                        <p class="discount">R$ 250,99</p>
-                        <h5>Por: 199,99</h5>
-                    </div>
-                </div>
-                <div class="card spacing">
-                    <div class="card-image">
-                        <img src="https://picsum.photos/600">
-                        <span class="card-title">Produto Teste</span>
-                        <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
-                    </div>
-                    <div class="card-content">
-                        <p class="discount">R$ 250,99</p>
-                        <h5>Por: 199,99</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="list-products">
-                <div class="card spacing">
-                    <div class="card-image">
-                        <img src="https://picsum.photos/600">
-                        <span class="card-title">Produto Teste</span>
-                        <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
-                    </div>
-                    <div class="card-content">
-                        <p class="discount">R$ 250,99</p>
-                        <h5>Por: 199,99</h5>
-                    </div>
-                </div>
-                <div class="card spacing">
-                    <div class="card-image">
-                        <img src="https://picsum.photos/600">
-                        <span class="card-title">Produto Teste</span>
-                        <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
-                    </div>
-                    <div class="card-content">
-                        <p class="discount">R$ 250,99</p>
-                        <h5>Por: 199,99</h5>
-                    </div>
-                </div>
-                <div class="card spacing">
-                    <div class="card-image">
-                        <img src="https://picsum.photos/600">
-                        <span class="card-title">Produto Teste</span>
-                        <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
-                    </div>
-                    <div class="card-content">
-                        <p class="discount">R$ 250,99</p>
-                        <h5>Por: 199,99</h5>
-                    </div>
-                </div>
-                <div class="card spacing">
-                    <div class="card-image">
-                        <img src="https://picsum.photos/600">
-                        <span class="card-title">Produto Teste</span>
-                        <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
-                    </div>
-                    <div class="card-content">
-                        <p class="discount">R$ 250,99</p>
-                        <h5>Por: 199,99</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="list-products">
-                <div class="card spacing">
-                    <div class="card-image">
-                        <img src="https://picsum.photos/600">
-                        <span class="card-title">Produto Teste</span>
-                        <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
-                    </div>
-                    <div class="card-content">
-                        <p class="discount">R$ 250,99</p>
-                        <h5>Por: 199,99</h5>
-                    </div>
-                </div>
-                <div class="card spacing">
-                    <div class="card-image">
-                        <img src="https://picsum.photos/600">
-                        <span class="card-title">Produto Teste</span>
-                        <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
-                    </div>
-                    <div class="card-content">
-                        <p class="discount">R$ 250,99</p>
-                        <h5>Por: 199,99</h5>
-                    </div>
-                </div>
-                <div class="card spacing">
-                    <div class="card-image">
-                        <img src="https://picsum.photos/600">
-                        <span class="card-title">Produto Teste</span>
-                        <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
-                    </div>
-                    <div class="card-content">
-                        <p class="discount">R$ 250,99</p>
-                        <h5>Por: 199,99</h5>
-                    </div>
-                </div>
-                <div class="card spacing">
-                    <div class="card-image">
-                        <img src="https://picsum.photos/600">
-                        <span class="card-title">Produto Teste</span>
-                        <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
-                    </div>
-                    <div class="card-content">
-                        <p class="discount">R$ 250,99</p>
-                        <h5>Por: 199,99</h5>
-                    </div>
-                </div>
-            </div>
+            <?php
+                include 'conexao.php';
+                $sql = "SELECT * FROM produtos";
+                $condicao = mysqli_query($con, $sql);
+                if(mysqli_num_rows($condicao) > 0){
+                    while ($registro = mysqli_fetch_array($condicao))
+                    {
+                      $nomeres = $registro['Prod_Nome'];
+                      $precores = $registro['Prod_Preco'];
+                      $qtdres = $registro['Prod_Quantidade'];
+                        echo "
+                        <div class='list-products'>
+                            <div class='card spacing'>
+                                <div class='card-image'>
+                                    <img src='https://picsum.photos/600'>
+                                    <span class='card-title'>$nomeres</span>
+                                    <a class='btn-floating halfway-fab waves-effect waves-light dark-mode'><i class='material-icons'>local_grocery_store</i></a>
+                                </div>
+                                <div class='card-content'>
+                                    <p class='discount'>R$ 250,99</p>
+                                    <h5>$precores</h5>
+                                </div>
+                            </div>
+                        </div>";
+                    }
+                }
+                // <div class="list-products">
+                //     <div class="card spacing">
+                //         <div class="card-image">
+                //             <img src="https://picsum.photos/600">
+                //             <span class="card-title">Produto Teste</span>
+                //             <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
+                //         </div>
+                //         <div class="card-content">
+                //             <p class="discount">R$ 250,99</p>
+                //             <h5>Por: 199,99</h5>
+                //         </div>
+                //     </div>
+                // </div>
+            ?>
         </section>
 
         <div class="fixed-action-btn">
