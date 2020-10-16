@@ -103,7 +103,6 @@ h2 {
 textarea {
     background-color: white;
 }
-
 @media screen and (min-width: 998px) {
     .carousel-size {
         height: 50vh;
@@ -113,6 +112,13 @@ textarea {
         flex-direction: row;
         justify-content: center;
         padding: 10px 0px;
+    }
+    .list-products2{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding: 10px 0px;
+        flex-wrap: wrap;
     }
     .spacing {
         margin: 20px 30px;
@@ -135,5 +141,11 @@ textarea {
         resize: vertical;
         min-height: 100px;
         max-height: 150px;
+    }
+    .card-size{
+        width: 20vw;  
+    }
+    .search-size{
+        width:35vw;
     }
 }

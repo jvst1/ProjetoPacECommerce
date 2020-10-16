@@ -1,0 +1,105 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --main-bg-color: #292C35;
+    --secondary-bg-color: white;
+}
+
+body {
+    background-image: url("../images/background.jpg");
+}
+
+nav {
+    background-color: var(--main-bg-color);
+    padding: 0px 30px;
+}
+
+.dark-mode {
+    background-color: var(--main-bg-color);
+}
+
+.light-mode {
+    background-color: var(--secondary-bg-color);
+    color: #292C35;
+}
+
+.dark-mode:hover {
+    background-color: var(--main-bg-color);
+}
+
+.light-mode:hover {
+    background-color: var(--secondary-bg-color);
+}
+
+.spacing {
+    margin: 20px;
+}
+
+.discount {
+    text-decoration: line-through;
+}
+
+.addcart {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-field input:focus+label {
+    color: #292C35 !important;
+}
+
+.row .input-field input:focus {
+    border-bottom: 1px solid #292C35 !important;
+    box-shadow: 0 1px 0 0 #292C35 !important
+}
+
+input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):focus:not([readonly]), input[type=password]:not(.browser-default):focus:not([readonly]), input[type=email]:not(.browser-default):focus:not([readonly]), input[type=url]:not(.browser-default):focus:not([readonly]), input[type=time]:not(.browser-default):focus:not([readonly]), input[type=date]:not(.browser-default):focus:not([readonly]), input[type=datetime]:not(.browser-default):focus:not([readonly]), input[type=datetime-local]:not(.browser-default):focus:not([readonly]), input[type=tel]:not(.browser-default):focus:not([readonly]), input[type=number]:not(.browser-default):focus:not([readonly]), input[type=search]:not(.browser-default):focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #292C35 !important;
+    -webkit-box-shadow: 0 1px 0 0 #292C35 !important;
+    box-shadow: 0 1px 0 0 #292C35 !important;
+}
+
+.btn:focus, .btn-large:focus, .btn-small:focus, .btn-floating:focus {
+    background-color: #292C35;
+}
+
+.flex-items {
+    display: flex;
+    justify-content: space-between;
+}
+
+.desktop {
+    display: none;
+}
+
+@media screen and (min-width: 998px) {
+    .card-size {
+        width: 100vw;
+    }
+    .spacing {
+        display: flex;
+        margin: 40px;
+    }
+    .flex-column {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 50px;
+    }
+    .desktop {
+        display: block;
+        align-self: start;
+        margin-top: -50px;
+    }
+    .addcart {
+        width: 20vw;
+    }
+    .quantity {
+        font-size: 1.4rem;
+    }
+}
