@@ -22,24 +22,49 @@
 </script>
 
 <body>
-    <nav class="nav-extended">
-        <div class="nav-wrapper">
-            <a href="index.php" class="brand-logo">ECommerce</a>
+<?php
+     session_start();
+     include 'conexao.php';
+                
+     echo"
+    <nav class='nav-extended'>
+        <div class='nav-wrapper'>
+            <a href='index.php' class='brand-logo'>ECommerce</a>
 
-            <a href="#" class="sidenav-trigger" data-target="mobile-nav">
-                <i class="material-icons">menu</i>
+            <a href='#' class='sidenav-trigger' data-target='mobile-nav'>
+                <i class='material-icons'>menu</i>
             </a>
 
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="#">Produtos</a></li>
-                <li><a href="#">Promoção</a></li>
-                <li><a href="#">Lançamentos</a></li>
-                <li><a href='telacadastro.php'>Cadastrar-se</a></li>
-                <li><a href='telalogin.php'>Entrar</a></li>
-                <li><a href='#'><i class="material-icons">local_grocery_store</i></a></li>
+            <ul id='nav-mobile' class='right hide-on-med-and-down'>
+                <li><a href='#'>Produtos</a></li>
+                <li><a href='#'>Promoção</a></li>
+                <li><a href='#'>Lançamentos</a></li>
+               ";
+                    if (isset($_SESSION['login'])){
+                            $var = $_SESSION['login'];
+                            $sql = "SELECT Cliente_Nome FROM clientes WHERE Cliente_Email = '$var'";
+                            $condicao = mysqli_query($con, $sql);
+                            if(mysqli_num_rows($condicao) > 0){
+                                $registro = mysqli_fetch_array($condicao);
+                                $nomeCliente = $registro['Cliente_Nome'];
+                        }
+                        echo"
+                        <li>$nomeCliente</li>
+                        <li><a href='logout.php'><i class='material-icons'>input</i></a></li>";
+                    }
+                    else{
+                        echo"
+                        <li><a href='telacadastro.php'>Cadastrar-se</a></li>
+                        <li><a href='telalogin.php'>Entrar</a></li>
+                        ";
+                    }
+                echo"
+                <li><a href='#'><i class='material-icons'>local_grocery_store</i></a></li>
             </ul>
         </div>
     </nav>
+    ";
+?>
 
     <ul class="sidenav" id="mobile-nav">
         <li><a href="#"><i class="material-icons">local_grocery_store</i>Produtos</a></li>
@@ -58,15 +83,13 @@
         </ul>
     </div>
         <?php
-                include 'conexao.php';
-                include 'conexao.php';
-                session_start();
                 $var = htmlspecialchars($_GET['id']);
                 $sql = "SELECT * FROM produtos WHERE Prod_ID = '$var'";
                 $condicao = mysqli_query($con, $sql);
                 if(mysqli_num_rows($condicao) > 0){
                     $registro = mysqli_fetch_array($condicao);
                     $nomeres = $registro['Prod_Nome'];
+                    $descres = $registro['Prod_Descricao'];
                     $precores = $registro['Prod_Preco'];
                     $qtdres = $registro['Prod_Quantidade'];
                 }
@@ -100,7 +123,7 @@
             <br>
             <hr>
             <h4>Descrição</h4>
-            <h5>O empenho em analisar o início da atividade geral de formação de atitudes acarreta um processo de reformulação e modernização dos relacionamentos verticais entre as hierarquias</h5>
+            <h5 class='desc'>$descres</h5>
         </div>
     </div>"
     ?>
