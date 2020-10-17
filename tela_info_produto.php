@@ -24,7 +24,7 @@
 <body>
     <nav class="nav-extended">
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo">ECommerce</a>
+            <a href="index.php" class="brand-logo">ECommerce</a>
 
             <a href="#" class="sidenav-trigger" data-target="mobile-nav">
                 <i class="material-icons">menu</i>

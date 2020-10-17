@@ -22,11 +22,11 @@
 </script>
 
 <body>
-<?php
-     session_start();
-     include 'conexao.php';
-                
-     echo"
+    <?php
+    session_start();
+    include 'conexao.php';
+
+    echo "
     <nav class='nav-extended'>
         <div class='nav-wrapper'>
             <a href='#' class='brand-logo'>ECommerce</a>
@@ -40,31 +40,30 @@
                 <li><a href='#'>Promoção</a></li>
                 <li><a href='#'>Lançamentos</a></li>
                ";
-                    if (isset($_SESSION['login'])){
-                            $var = $_SESSION['login'];
-                            $sql = "SELECT Cliente_Nome FROM clientes WHERE Cliente_Email = '$var'";
-                            $condicao = mysqli_query($con, $sql);
-                            if(mysqli_num_rows($condicao) > 0){
-                                $registro = mysqli_fetch_array($condicao);
-                                $nomeCliente = $registro['Cliente_Nome'];
-                        }
-                        echo"
+    if (isset($_SESSION['login'])) {
+        $var = $_SESSION['login'];
+        $sql = "SELECT Cliente_Nome FROM clientes WHERE Cliente_Email = '$var'";
+        $condicao = mysqli_query($con, $sql);
+        if (mysqli_num_rows($condicao) > 0) {
+            $registro = mysqli_fetch_array($condicao);
+            $nomeCliente = $registro['Cliente_Nome'];
+        }
+        echo "
                         <li>$nomeCliente</li>
                         <li><a href='logout.php'><i class='material-icons'>input</i></a></li>";
-                    }
-                    else{
-                        echo"
+    } else {
+        echo "
                         <li><a href='telacadastro.php'>Cadastrar-se</a></li>
                         <li><a href='telalogin.php'>Entrar</a></li>
                         ";
-                    }
-                echo"
+    }
+    echo "
                 <li><a href='#'><i class='material-icons'>local_grocery_store</i></a></li>
             </ul>
         </div>
     </nav>
     ";
-?>
+    ?>
     <ul class="sidenav" id="mobile-nav">
         <li><a href="#"><i class="material-icons">local_grocery_store</i>Produtos</a></li>
         <li><a href="#"><i class="material-icons">local_offer</i>Promocoes</a></li>
@@ -74,10 +73,10 @@
 
     <main>
         <section class="searchBar">
-            <form>
+            <form method="get">
                 <div class="input-field search-size dark-mode">
-                    <input id="search" type="search" placeholder="Pesquise..." required>
-                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                    <input id="search" type="search" placeholder="Pesquise..." name="pesquisa" required>
+                    <label class="label-icon" for="search"><button type="submit" style="background:transparent; border:none;"><i class="material-icons">search</i></button></label>
                     <i class="material-icons right">close</i>
                 </div>
             </form>
@@ -86,43 +85,43 @@
             <h2>Promoções da Semana</h2>
             <div class="list-products">
                 <div class="card spacing">
-                <a href="infoproduto.php">
-                    <div class="card-image">
-                        <img src="https://picsum.photos/600">
-                        <span class="card-title">Produto Teste</span>
-                        <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
-                    </div>
-                    <div class="card-content">
-                        <p class="discount">R$ 250,99</p>
-                        <h5>Por: 199,99</h5>
-                    </div>
-                </a>
+                    <a href="infoproduto.php">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/600">
+                            <span class="card-title">Produto Teste</span>
+                            <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
+                        </div>
+                        <div class="card-content">
+                            <p class="discount">R$ 250,99</p>
+                            <h5>Por:R$ 199,99</h5>
+                        </div>
+                    </a>
                 </div>
                 <div class="card spacing">
-                <a href="infoproduto.php">
-                    <div class="card-image">
-                        <img src="https://picsum.photos/600">
-                        <span class="card-title">Produto Teste</span>
-                        <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
-                    </div>
-                    <div class="card-content">
-                        <p class="discount">R$ 250,99</p>
-                        <h5>Por: 199,99</h5>
-                    </div>
-                </a>
+                    <a href="infoproduto.php">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/600">
+                            <span class="card-title">Produto Teste</span>
+                            <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
+                        </div>
+                        <div class="card-content">
+                            <p class="discount">R$ 250,99</p>
+                            <h5>Por:R$ 199,99</h5>
+                        </div>
+                    </a>
                 </div>
                 <div class="card spacing">
-                <a href="infoproduto.php">
-                    <div class="card-image">
-                        <img src="https://picsum.photos/600">
-                        <span class="card-title">Produto Teste</span>
-                        <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
-                    </div>
-                    <div class="card-content">
-                        <p class="discount">R$ 250,99</p>
-                        <h5>Por: 199,99</h5>
-                    </div>
-                </a>
+                    <a href="infoproduto.php">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/600">
+                            <span class="card-title">Produto Teste</span>
+                            <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
+                        </div>
+                        <div class="card-content">
+                            <p class="discount">R$ 250,99</p>
+                            <h5>Por:R$ 199,99</h5>
+                        </div>
+                    </a>
                 </div>
             </div>
         </section>
@@ -130,39 +129,77 @@
         <section class="second-page">
             <h2 class="product-text">Produtos</h2>
             <?php
-                include 'conexao.php';
+
+            if (isset($_GET['pesquisa'])) {
+                $valor_pesquisar = $_GET['pesquisa'];
+                $result_ferramenta = "SELECT * FROM produtos where Prod_Nome like '%$valor_pesquisar%'";
+                $resultado_ferramenta = mysqli_query($con, $result_ferramenta);
+                if (mysqli_num_rows($resultado_ferramenta) > 0) {
+                    echo "<div class='list-products2'>";
+                    while ($registro = mysqli_fetch_array($resultado_ferramenta)) {
+                        $idres = $registro['Prod_ID'];
+                        $_SESSION['id'] = $idres;
+                        $precoantigo = $registro['Prod_Preco_Antigo'];
+                        $nomeres = $registro['Prod_Nome'];
+                        $precores = $registro['Prod_Preco'];
+                        $qtdres = $registro['Prod_Quantidade'];
+                        echo "
+                <div class='card spacing card-size'>
+                <a href='tela_info_produto.php?id=$idres'>
+                    <div class='card-image'>
+                        <img src='https://picsum.photos/600'>
+                        <span class='card-title'>$nomeres</span>
+                        <a class='btn-floating halfway-fab waves-effect waves-light dark-mode'><i class='material-icons'>local_grocery_store</i></a>
+                    </div>
+                    <div class='card-content'>";
+                        if ($precoantigo != null) {
+                            echo "<p class='discount'>R$ $precoantigo</p>";
+                        }
+                        echo "
+                        <h5>R$ $precores</h5>
+                    </div>
+                </a>
+                </div>
+            ";
+                    }
+                }
+                echo "</div>";
+            } else {
+                $valor_pesquisar = '';
                 $sql = "SELECT * FROM produtos";
                 $condicao = mysqli_query($con, $sql);
-                if(mysqli_num_rows($condicao) > 0){
-                    echo"<div class='list-products2'>";
-                    while ($registro = mysqli_fetch_array($condicao))
-                    {
-                    $idres = $registro['Prod_ID'];
-                    $_SESSION['id'] = $idres;
-                    $precoantigo = $registro['Prod_Preco_Antigo'];   
-                    $nomeres = $registro['Prod_Nome'];
-                    $precores = $registro['Prod_Preco'];
-                    $qtdres = $registro['Prod_Quantidade'];
+                if (mysqli_num_rows($condicao) > 0) {
+                    echo "<div class='list-products2'>";
+                    while ($registro = mysqli_fetch_array($condicao)) {
+                        $idres = $registro['Prod_ID'];
+                        $_SESSION['id'] = $idres;
+                        $precoantigo = $registro['Prod_Preco_Antigo'];
+                        $nomeres = $registro['Prod_Nome'];
+                        $precores = $registro['Prod_Preco'];
+                        $qtdres = $registro['Prod_Quantidade'];
                         echo "
-                            <div class='card spacing card-size'>
-                            <a href='tela_info_produto.php?id=$idres'>
-                                <div class='card-image'>
-                                    <img src='https://picsum.photos/600'>
-                                    <span class='card-title'>$nomeres</span>
-                                    <a class='btn-floating halfway-fab waves-effect waves-light dark-mode'><i class='material-icons'>local_grocery_store</i></a>
-                                </div>
-                                <div class='card-content'>";
-                                if($precoantigo != null){
-                                    echo"<p class='discount'>$precoantigo</p>";
-                                }echo"
-                                    <h5>$precores</h5>
-                                </div>
-                            </a>
+                        <div class='card spacing card-size'>
+                        <a href='tela_info_produto.php?id=$idres'>
+                            <div class='card-image'>
+                                <img src='https://picsum.photos/600'>
+                                <span class='card-title'>$nomeres</span>
+                                <a class='btn-floating halfway-fab waves-effect waves-light dark-mode'><i class='material-icons'>local_grocery_store</i></a>
                             </div>
-                        ";
+                            <div class='card-content'>";
+                        if ($precoantigo != null) {
+                            echo "<p class='discount'>R$ $precoantigo</p>";
+                        }
+                        echo "
+                                <h5>R$ $precores</h5>
+                            </div>
+                        </a>
+                        </div>
+                    ";
                     }
-                    echo"</div>";
+                    echo "</div>";
                 }
+            }
+
             ?>
         </section>
 
