@@ -81,51 +81,6 @@
                 </div>
             </form>
         </section>
-        <section class="landing-page">
-            <h2>Promoções da Semana</h2>
-            <div class="list-products">
-                <div class="card spacing">
-                    <a href="infoproduto.php">
-                        <div class="card-image">
-                            <img src="https://picsum.photos/600">
-                            <span class="card-title">Produto Teste</span>
-                            <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
-                        </div>
-                        <div class="card-content">
-                            <p class="discount">R$ 250,99</p>
-                            <h5>Por:R$ 199,99</h5>
-                        </div>
-                    </a>
-                </div>
-                <div class="card spacing">
-                    <a href="infoproduto.php">
-                        <div class="card-image">
-                            <img src="https://picsum.photos/600">
-                            <span class="card-title">Produto Teste</span>
-                            <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
-                        </div>
-                        <div class="card-content">
-                            <p class="discount">R$ 250,99</p>
-                            <h5>Por:R$ 199,99</h5>
-                        </div>
-                    </a>
-                </div>
-                <div class="card spacing">
-                    <a href="infoproduto.php">
-                        <div class="card-image">
-                            <img src="https://picsum.photos/600">
-                            <span class="card-title">Produto Teste</span>
-                            <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
-                        </div>
-                        <div class="card-content">
-                            <p class="discount">R$ 250,99</p>
-                            <h5>Por:R$ 199,99</h5>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-
         <section class="second-page">
             <h2 class="product-text">Produtos</h2>
             <?php

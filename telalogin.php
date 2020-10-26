@@ -32,8 +32,8 @@
                 <label>Senha</label>
                 <input type="password" name="senha" id="senha" placeholder="Senha">
                 <div class="flex">
-                    <button type="submit" class="btn waves-effect waves-light btn-large dark-mode spacing">Entrar</button>
-                    <a href="telacadastro.php" class="btn waves-effect waves-light btn-large dark-mode spacing desktop">Cadastrar</a>
+                    <button id="btnlogin" type="submit" class="btn waves-effect waves-light btn-large dark-mode spacing">Entrar</button>
+                    <a id="cadtelalogin" href="telacadastro.php" class="btn waves-effect waves-light btn-large dark-mode spacing desktop">Cadastrar</a>
                 </div>
                 <a href="telacadastro.php" class="waves-effect spacing mobile"><u>Ainda não tem conta? Registre-se agora mesmo</u></a>
             </form>

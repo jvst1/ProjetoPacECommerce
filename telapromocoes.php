@@ -81,58 +81,13 @@
                 </div>
             </form>
         </section>
-        <section class="landing-page">
-            <h2>Promoções da Semana</h2>
-            <div class="list-products">
-                <div class="card spacing">
-                    <a href="infoproduto.php">
-                        <div class="card-image">
-                            <img src="https://picsum.photos/600">
-                            <span class="card-title">Produto Teste</span>
-                            <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
-                        </div>
-                        <div class="card-content">
-                            <p class="discount">R$ 250,99</p>
-                            <h5>Por:R$ 199,99</h5>
-                        </div>
-                    </a>
-                </div>
-                <div class="card spacing">
-                    <a href="infoproduto.php">
-                        <div class="card-image">
-                            <img src="https://picsum.photos/600">
-                            <span class="card-title">Produto Teste</span>
-                            <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
-                        </div>
-                        <div class="card-content">
-                            <p class="discount">R$ 250,99</p>
-                            <h5>Por:R$ 199,99</h5>
-                        </div>
-                    </a>
-                </div>
-                <div class="card spacing">
-                    <a href="infoproduto.php">
-                        <div class="card-image">
-                            <img src="https://picsum.photos/600">
-                            <span class="card-title">Produto Teste</span>
-                            <a class="btn-floating halfway-fab waves-effect waves-light dark-mode"><i class="material-icons">local_grocery_store</i></a>
-                        </div>
-                        <div class="card-content">
-                            <p class="discount">R$ 250,99</p>
-                            <h5>Por:R$ 199,99</h5>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-
         <section class="second-page">
             <h2 class="product-text">Produtos</h2>
             <?php
 
             if (isset($_GET['pesquisa'])) {
                 $valor_pesquisar = $_GET['pesquisa'];
-                $result_ferramenta = "SELECT * FROM produtos where Prod_Nome like '%$valor_pesquisar%'";
+                $result_ferramenta = "SELECT * FROM produtos where Prod_Nome like '%$valor_pesquisar%' AND Prod_Promocao = '1'";
                 $resultado_ferramenta = mysqli_query($con, $result_ferramenta);
                 if (mysqli_num_rows($resultado_ferramenta) > 0) {
                     echo "<div class='list-products2'>";
@@ -166,7 +121,7 @@
                 echo "</div>";
             } else {
                 $valor_pesquisar = '';
-                $sql = "SELECT * FROM produtos";
+                $sql = "SELECT * FROM produtos where Prod_Promocao = '1'";
                 $condicao = mysqli_query($con, $sql);
                 if (mysqli_num_rows($condicao) > 0) {
                     echo "<div class='list-products2'>";

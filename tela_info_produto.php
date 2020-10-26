@@ -36,8 +36,8 @@
             </a>
 
             <ul id='nav-mobile' class='right hide-on-med-and-down'>
-                <li><a href='#'>Produtos</a></li>
-                <li><a href='#'>Promoção</a></li>
+                <li><a href='telaprodutos.php'>Produtos</a></li>
+                <li><a href='telapromocoes.php'>Promoção</a></li>
                 <li><a href='#'>Lançamentos</a></li>
                ";
                     if (isset($_SESSION['login'])){
