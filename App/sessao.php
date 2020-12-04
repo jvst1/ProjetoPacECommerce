@@ -1,5 +1,5 @@
 <?php
-include 'conexao.php';
+    include '../Database/conexao.php';
     session_start();
     $email = $_POST ['email'];
     $senha =  md5($_POST['senha']);
@@ -14,12 +14,12 @@ include 'conexao.php';
          $_SESSION['login'] = $email;
          $_SESSION['txtsenha'] = $senha;
          if(isset($_SESSION['login'])){
-             header('location: index.php');
+             header('location: ../index.php');
          }else{
-             header('location: telalogin.php');
+             header('location: ../screens/telalogin.php');
          }
      }else{
          session_destroy();
-         header('location: telalogin.php');
+         header('location: ../screens/telalogin.php');
     }
 ?>

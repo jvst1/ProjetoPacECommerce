@@ -1,5 +1,5 @@
 <?php
-    include 'conexao.php';
+    include '../Database/conexao.php';
     session_start();
     $email = $_POST ['usuario'];
     $nome = $_POST ['nomecompleto'];
@@ -21,7 +21,7 @@
     if(empty($nome)||empty($email)||empty($CPF)||empty($numerotelefone)||empty($senha)||empty($confirmesenha)||empty($endereco)||empty($bairro)||empty($cidade)||empty($estado)||empty($num)||empty($cep))
     {
         $_SESSION['erroCampos'] = "<div class='erro'>Preencha todos os campos!</div>";
-        header('location: telacadastro.php');
+        header('location: ../screens/telacadastro.php');
         // echo  "<div class='erro'>Preencha todos os campos!</div>";
     }
     elseif($senha==$confirmesenha)
@@ -31,6 +31,6 @@
     }
     if(mysqli_query($con, $sql))
     {
-        header('location: telalogin.php');
+        header('location: ../screens/telalogin.php');
     }
 ?>

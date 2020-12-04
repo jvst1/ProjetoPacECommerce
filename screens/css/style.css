@@ -145,7 +145,15 @@ textarea {
     .card-size{
         width: 20vw;  
     }
-    .search-size{
-        width:35vw;
+    .search-size {
+        width: 30vw;
+        transition: all 2s ease-out;
+        border-radius: 20px;
+    }
+    .input-field input[type=search]:focus:not(.browser-default) {
+        border-radius: 20px;
+    }
+    .message {
+        padding: 20px;
     }
 }

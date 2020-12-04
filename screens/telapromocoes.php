@@ -24,12 +24,36 @@
 <body>
     <?php
     session_start();
-    include 'conexao.php';
+    include '../Database/conexao.php';
+    
+if (isset($_SESSION['login'])) {
+    $var = $_SESSION['login'];
+    $sql = "SELECT Cliente_Nome FROM clientes WHERE Cliente_Email = '$var'";
+    $condicao = mysqli_query($con, $sql);
+    if (mysqli_num_rows($condicao) > 0) {
+        $registro = mysqli_fetch_array($condicao);
+        $nomeCliente = $registro['Cliente_Nome'];
+    }
+    echo "
+        <nav class='nav-extended'>
+            <div class='nav-wrapper'>
+                <a href='../index.php' class='brand-logo'>Chosen</a>
 
+                <a href='#' class='sidenav-trigger' data-target='mobile-nav'>
+                    <i class='material-icons'>menu</i>
+                </a>
+
+                <ul id='nav-mobile' class='right hide-on-med-and-down'>
+                    <li><a href='telaprodutos.php'>Produtos</a></li>
+                    <li><a href='telapromocoes.php'>Promoção</a></li>
+                    <li>$nomeCliente</li>
+                    <li><a id='logout' href='../App/logout.php'><i class='material-icons'>input</i></a></li>
+    ";
+} else {
     echo "
     <nav class='nav-extended'>
         <div class='nav-wrapper'>
-            <a href='index.php' class='brand-logo'>ECommerce</a>
+            <a href='../index.php' class='brand-logo'>Chosen</a>
 
             <a href='#' class='sidenav-trigger' data-target='mobile-nav'>
                 <i class='material-icons'>menu</i>
@@ -38,32 +62,17 @@
             <ul id='nav-mobile' class='right hide-on-med-and-down'>
                 <li><a href='telaprodutos.php'>Produtos</a></li>
                 <li><a href='telapromocoes.php'>Promoção</a></li>
-                <li><a href='#'>Lançamentos</a></li>
-               ";
-    if (isset($_SESSION['login'])) {
-        $var = $_SESSION['login'];
-        $sql = "SELECT Cliente_Nome FROM clientes WHERE Cliente_Email = '$var'";
-        $condicao = mysqli_query($con, $sql);
-        if (mysqli_num_rows($condicao) > 0) {
-            $registro = mysqli_fetch_array($condicao);
-            $nomeCliente = $registro['Cliente_Nome'];
-        }
-        echo "
-                        <li>$nomeCliente</li>
-                        <li><a id='logout' href='logout.php'><i class='material-icons'>input</i></a></li>";
-    } else {
-        echo "
-                        <li><a id='cadastrar' href='telacadastro.php'>Cadastrar-se</a></li>
-                        <li><a id='entrar' href='telalogin.php'>Entrar</a></li>
-                        ";
-    }
-    echo "
-                <li><a href='#'><i class='material-icons'>local_grocery_store</i></a></li>
+                <li><a id='cadastrar' href='telacadastro.php'>Cadastrar-se</a></li>
+                <li><a id='entrar' href='telalogin.php'>Entrar</a></li>
+    ";
+}echo "
+                <li><a href='tela_carrinho.php'><i class='material-icons'>local_grocery_store</i></a></li>
             </ul>
         </div>
     </nav>
-    ";
-    ?>
+";
+?>
+    
     <ul class="sidenav" id="mobile-nav">
         <li><a href="#"><i class="material-icons">local_grocery_store</i>Produtos</a></li>
         <li><a href="#"><i class="material-icons">local_offer</i>Promocoes</a></li>
@@ -87,7 +96,7 @@
 
             if (isset($_GET['pesquisa'])) {
                 $valor_pesquisar = $_GET['pesquisa'];
-                $result_ferramenta = "SELECT * FROM produtos where Prod_Nome like '%$valor_pesquisar%'";
+                $result_ferramenta = "SELECT * FROM produtos where Prod_Nome like '%$valor_pesquisar%' AND Prod_Promocao = '1'";
                 $resultado_ferramenta = mysqli_query($con, $result_ferramenta);
                 if (mysqli_num_rows($resultado_ferramenta) > 0) {
                     echo "<div class='list-products2'>";
@@ -121,7 +130,7 @@
                 echo "</div>";
             } else {
                 $valor_pesquisar = '';
-                $sql = "SELECT * FROM produtos";
+                $sql = "SELECT * FROM produtos where Prod_Promocao = '1'";
                 $condicao = mysqli_query($con, $sql);
                 if (mysqli_num_rows($condicao) > 0) {
                     echo "<div class='list-products2'>";

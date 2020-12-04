@@ -78,17 +78,22 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
 }
 
 @media screen and (min-width: 998px) {
+    .mobile {
+        display: none;
+    }
     .card-size {
-        width: 100vw;
+        width: 35vw;
     }
     .spacing {
         display: flex;
+        justify-content: space-around;
         margin: 40px;
     }
     .flex-column {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        width: 30vw;
         margin: 50px;
     }
     .desktop {

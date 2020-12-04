@@ -24,7 +24,54 @@
 </script>
 
 <body>
+    <?php
+       
+if (isset($_SESSION['login'])) {
+    $var = $_SESSION['login'];
+    $sql = "SELECT Cliente_Nome FROM clientes WHERE Cliente_Email = '$var'";
+    $condicao = mysqli_query($con, $sql);
+    if (mysqli_num_rows($condicao) > 0) {
+        $registro = mysqli_fetch_array($condicao);
+        $nomeCliente = $registro['Cliente_Nome'];
+    }
+    echo "
+        <nav class='nav-extended'>
+            <div class='nav-wrapper'>
+                <a href='index.php' class='brand-logo'>Chosen</a>
 
+                <a href='#' class='sidenav-trigger' data-target='mobile-nav'>
+                    <i class='material-icons'>menu</i>
+                </a>
+
+                <ul id='nav-mobile' class='right hide-on-med-and-down'>
+                    <li><a href='telaprodutos.php'>Produtos</a></li>
+                    <li><a href='telapromocoes.php'>Promoção</a></li>
+                    <li>$nomeCliente</li>
+                    <li><a id='logout' href='../App/logout.php'><i class='material-icons'>input</i></a></li>
+    ";
+} else {
+    echo "
+    <nav class='nav-extended'>
+        <div class='nav-wrapper'>
+            <a href='index.php' class='brand-logo'>Chosen</a>
+
+            <a href='#' class='sidenav-trigger' data-target='mobile-nav'>
+                <i class='material-icons'>menu</i>
+            </a>
+
+            <ul id='nav-mobile' class='right hide-on-med-and-down'>
+                <li><a href='telaprodutos.php'>Produtos</a></li>
+                <li><a href='telapromocoes.php'>Promoção</a></li>
+                <li><a id='cadastrar' href='telacadastro.php'>Cadastrar-se</a></li>
+                <li><a id='entrar' href='telalogin.php'>Entrar</a></li>
+    ";
+}echo "
+                <li><a href='tela_carrinho.php'><i class='material-icons'>local_grocery_store</i></a></li>
+            </ul>
+        </div>
+    </nav>
+";
+?>
     <div class="content">
         <div class="container">
             <?php
@@ -34,7 +81,7 @@
                 session_destroy();
             }
             ?>
-            <form method="post" action="cad.php">
+            <form method="post" action="../App/cad.php">
                 <h3>Cadastre-se</h3>
                 <label>Nome Completo*</label>
                 <input type="text" name="nomecompleto" id="nomecompleto" placeholder="Nome Completo">

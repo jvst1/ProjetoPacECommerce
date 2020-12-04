@@ -25,7 +25,7 @@
     <div class="content">
         <div class="container">
             <h3>Login</h3>
-            <form method="post" action="sessao.php">
+            <form method="post" action="../App/sessao.php">
                 <label>E-mail</label>
                 <input type="text" name="email" id="email" placeholder="Exemplo@exemplo.com.br">
                 <br>
