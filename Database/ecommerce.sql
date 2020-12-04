@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 16-Out-2020 às 03:21
+-- Tempo de geração: 04-Dez-2020 às 02:54
 -- Versão do servidor: 10.4.14-MariaDB
 -- versão do PHP: 7.4.10
 
@@ -53,7 +53,9 @@ INSERT INTO `clientes` (`Cliente_ID`, `Cliente_Nome`, `Cliente_Senha`, `Cliente_
 (4, 'Suellen', '698dc19d489c4e4db73e28a713eab07b', 'suellen@', 123434, 0, 'akjgfdasdlkfg', 'asdfkjgdsk', 'asdfkjasd', 'SC', 12345, 123434541),
 (5, 'Eduardo Klein', '7aeac3327f0e37e8f8e95ee489a283e6', 'eduardo@', 82566, 0, 'Rua Groenlandia', 'Itinga', 'Joinville', 'MS', 102, 2147483647),
 (6, 'Frederico', 'c01fcaf08c742545d5d76992d58775e2', 'fred@', 104072, 0, 'Rua Gothard Kaesemodel', 'Anita Garibaldi', 'Joinville', 'SC', 605, 89203522),
-(7, 'rafael', '81dc9bdb52d04dc20036dbd8313ed055', 'rafael@', 124352, 0, '1adfsadf', 'asdfasd', 'asdfdf', 'SC', 123, 12342134);
+(7, 'rafael', '81dc9bdb52d04dc20036dbd8313ed055', 'rafael@', 124352, 0, '1adfsadf', 'asdfasd', 'asdfdf', 'SC', 123, 12342134),
+(8, 'Natalia Ertl', '81dc9bdb52d04dc20036dbd8313ed055', 'nataliaertl@', 113798, 0, 'Rua Alfeu Carneiro Lins', 'Iririu', 'Joinville', 'SC', 82, 89227522),
+(9, 'Tais', '81dc9bdb52d04dc20036dbd8313ed055', 'tais@', 432543, 0, 'erdfsgsdg', 'sdfgsdf', 'sdfsfdgf', 'SC', 1243, 21342134);
 
 -- --------------------------------------------------------
 
@@ -104,26 +106,36 @@ CREATE TABLE `pedido` (
 CREATE TABLE `produtos` (
   `Prod_ID` int(11) NOT NULL,
   `Prod_Nome` text NOT NULL,
+  `Prod_Descricao` varchar(3000) NOT NULL,
   `Prod_Preco` float NOT NULL,
+  `Prod_Promocao` tinyint(1) NOT NULL,
   `Prod_Quantidade` int(11) NOT NULL,
-  `Prod_Preco_Antigo` float DEFAULT NULL
+  `Prod_Preco_Antigo` float DEFAULT NULL,
+  `Url_imagem` text NOT NULL,
+  `Pro_Preco_Frete` float NOT NULL,
+  `Pro_Peso` float NOT NULL,
+  `Pro_Altura` float NOT NULL,
+  `Pro_Largura` float NOT NULL,
+  `Pro_Comprimento` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `produtos`
 --
 
-INSERT INTO `produtos` (`Prod_ID`, `Prod_Nome`, `Prod_Preco`, `Prod_Quantidade`, `Prod_Preco_Antigo`) VALUES
-(1, 'Camiseta', 19.9, 12, 50),
-(2, 'Calça', 11.5, 10, NULL),
-(3, 'Meia', 5.65, 10, NULL),
-(4, 'ESCADA ELETRICA', 800, 20, NULL),
-(5, 'telha', 15, 10, NULL),
-(6, 'cotonete', 20, 5, NULL),
-(7, 'Cotonete enorme', 25, 10, 100),
-(8, 'Betoneira', 15, 15, 9000),
-(9, 'Delineador Colorido', 20, 1, NULL),
-(10, 'Latinha', 120, 5, NULL);
+INSERT INTO `produtos` (`Prod_ID`, `Prod_Nome`, `Prod_Descricao`, `Prod_Preco`, `Prod_Promocao`, `Prod_Quantidade`, `Prod_Preco_Antigo`, `Url_imagem`, `Pro_Preco_Frete`, `Pro_Peso`, `Pro_Altura`, `Pro_Largura`, `Pro_Comprimento`) VALUES
+(1, 'Camiseta', '', 19.9, 1, 12, 50, '', 0, 0, 0, 0, 0),
+(2, 'Calça', '', 11.5, 0, 10, NULL, '', 0, 0.5, 20, 20, 20),
+(3, 'Meia', '', 5.65, 0, 10, NULL, '', 0, 0, 0, 0, 0),
+(4, 'ESCADA ELETRICA', 'UMA ESCADA ELETRICA INCRIVEL QUE DAJFHDSFKLHSDGLKAHSDF kjahgkfdkg  adfkjfdaklghf adfkgjdfghlk', 800, 1, 20, NULL, '', 0, 0, 0, 0, 0),
+(5, 'telha', '', 15, 0, 10, NULL, '', 0, 0, 0, 0, 0),
+(6, 'cotonete', '', 20, 0, 5, NULL, '', 0, 0, 0, 0, 0),
+(7, 'Cotonete enorme', '', 25, 0, 10, 100, '', 0, 0, 0, 0, 0),
+(8, 'Betoneira', '', 15, 0, 15, 9000, '', 0, 0, 0, 0, 0),
+(9, 'Delineador Colorido', '', 20, 0, 1, NULL, '', 0, 0, 0, 0, 0),
+(10, 'Latinha', '', 120, 0, 5, NULL, '', 0, 0, 0, 0, 0),
+(12, 'Yasuo', 'O herói mais temido por seus aliados de toda Runeterra.', 1000, 0, 1, NULL, 'https://i.pinimg.com/originals/65/2a/79/652a79805036c5b55d7845037df042a4.jpg', 0, 0, 0, 0, 0),
+(13, 'AWP - Dragon Lore', 'Obra prima.', 7320, 0, 1, NULL, 'https://i.redd.it/h91sil5400e51.png', 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -188,7 +200,7 @@ ALTER TABLE `produtos_pedido`
 -- AUTO_INCREMENT de tabela `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `Cliente_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Cliente_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `clienteteste`
@@ -206,7 +218,7 @@ ALTER TABLE `pedido`
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `Prod_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `Prod_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
