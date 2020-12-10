@@ -4,15 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="text/css" rel="stylesheet" href="./Screens/css/materialize/css/materialize.min.css" media="screen,projection" />
-    <link rel="stylesheet" href="./Screens/css/style.css">
-    <link rel="stylesheet" href="./Screens/css/global.css">
+    <link type="text/css" rel="stylesheet" href="css/materialize/css/materialize.min.css" media="screen,projection" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/global.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <title>Chosen</title>
+    <title>ECommerce Pac2</title>
 </head>
 
 <script>
@@ -22,18 +22,18 @@
     });
 
     $(function() {
-        $("#nav-bar").load("./Screens/components/navbar.php");
+        $("#nav-bar").load("./components/navbar.php");
     });
 
     $(function() {
-        $("#footer").load("./Screens/components/footer.html");
+        $("#footer").load("./components/footer.html");
     });
 </script>
 
 <body>
     <?php
     session_start();
-    include './Database/conexao.php';
+    include '../Database/conexao.php';
     ?>
 
     <div id="nav-bar"></div>
@@ -75,74 +75,35 @@
                 </div>
             </form>
         </section>
-        <section class="landing-page">
-            <h2>Promoções da Semana</h2>
-            <?php
-            $sql = "SELECT * FROM produtos WHERE Prod_Promocao = 1 ORDER BY Prod_ID LIMIT 3";
-            $condicao = mysqli_query($con, $sql);
-            if (mysqli_num_rows($condicao) > 0) {
-                echo "<div class='list-products2'>";
-                while ($registro = mysqli_fetch_array($condicao)) {
-                    $idres = $registro['Prod_ID'];
-                    $_SESSION['id'] = $idres;
-                    $imagem = $registro['Prod_Imagem'];
-                    $precoantigo = $registro['Prod_Preco_Antigo'];
-                    $nomeres = $registro['Prod_Nome'];
-                    $precores = $registro['Prod_Preco'];
-                    $qtdres = $registro['Prod_Quantidade'];
-                    echo "
-                    <div id='card' class='card spacing card-size'>
-                    <a href='/ProjetoPacECommerce/Screens/tela_info_produto.php?id=$idres'>
-                        <div class='card-image'>
-                        <img class='image-size' src='$imagem'>
-                            <a class='btn-floating halfway-fab waves-effect waves-light dark-mode' href='/ProjetoPacECommerce/App/adicionar_produto_carrinho.php?id=$idres'><i class='material-icons'>local_grocery_store</i></a>
-                        </div>
-                        <div class='card-content'>
-                        <span class='text-black'>$nomeres</span>";
-                    if ($precoantigo != null) {
-                        echo "<p class='discount'>De: R$ $precoantigo</p>";
-                    }
-                    echo "
-                            <h5>R$ $precores</h5>
-                        </div>
-                    </a>
-                    </div>
-                ";
-                }
-                echo "</div>";
-            }
-            ?>
-        </section>
-
         <section class="second-page">
-            <h2 class="product-text">Produtos</h2>
+            <h2 class="product-text">Lançamentos</h2>
             <?php
 
             if (isset($_GET['pesquisa'])) {
                 $valor_pesquisar = $_GET['pesquisa'];
-                $result_ferramenta = "SELECT * FROM produtos where Prod_Nome like '%$valor_pesquisar%'";
+                $result_ferramenta = "SELECT * FROM produtos where Prod_Nome like '%$valor_pesquisar%' ORDER BY Prod_ID DESC";
                 $resultado_ferramenta = mysqli_query($con, $result_ferramenta);
                 if (mysqli_num_rows($resultado_ferramenta) > 0) {
                     echo "<div class='list-products2'>";
                     while ($registro = mysqli_fetch_array($resultado_ferramenta)) {
                         $idres = $registro['Prod_ID'];
                         $_SESSION['id'] = $idres;
-                        $imagem = $registro['Prod_Imagem'];
+                        $imagemres = $registro['Prod_Imagem'];
                         $precoantigo = $registro['Prod_Preco_Antigo'];
                         $nomeres = $registro['Prod_Nome'];
                         $precores = $registro['Prod_Preco'];
                         $qtdres = $registro['Prod_Quantidade'];
                         echo "
                 <div class='card spacing card-size'>
-                <a href='/ProjetoPacECommerce/Screens/tela_info_produto.php?id=$idres'>
+                <a href='tela_info_produto.php?id=$idres'>
                     <div class='card-image'>
-                        <img class='image-size' src='$imagem'>
-                        <a class='btn-floating halfway-fab waves-effect waves-light dark-mode' href='/ProjetoPacECommerce/App/adicionar_produto_carrinho.php?id=$idres'><i class='material-icons'>local_grocery_store</i></a>
+                        <img class='image-size' src='$imagemres'>
+                        <a class='btn-floating halfway-fab waves-effect waves-light dark-mode'  href='/ProjetoPacECommerce/App/adicionar_produto_carrinho.php?id=$idres'><i class='material-icons'>local_grocery_store</i></a>
                     </div>
                     <div class='card-content'>
-                    <span class='text-black'>$nomeres</span>";
+                    <span class='card-title'>$nomeres</span>";
                         if ($precoantigo != null) {
-                            echo "<p class='discount'>De: R$ $precoantigo</p>";
+                            echo "<p class='discount'>R$ $precoantigo</p>";
                         }
                         echo "
                         <h5>R$ $precores</h5>
@@ -155,34 +116,34 @@
                 echo "</div>";
             } else {
                 $valor_pesquisar = '';
-                $sql = "SELECT * FROM produtos";
+                $sql = "SELECT * FROM produtos  ORDER BY Prod_ID DESC";
                 $condicao = mysqli_query($con, $sql);
                 if (mysqli_num_rows($condicao) > 0) {
                     echo "<div class='list-products2'>";
                     while ($registro = mysqli_fetch_array($condicao)) {
                         $idres = $registro['Prod_ID'];
                         $_SESSION['id'] = $idres;
-                        $imagem = $registro['Prod_Imagem'];
+                        $imagemres = $registro['Prod_Imagem'];
                         $precoantigo = $registro['Prod_Preco_Antigo'];
                         $nomeres = $registro['Prod_Nome'];
                         $precores = $registro['Prod_Preco'];
                         $qtdres = $registro['Prod_Quantidade'];
                         echo "
                         <div id='card' class='card spacing card-size'>
-                        <a href='/ProjetoPacECommerce/Screens/tela_info_produto.php?id=$idres'>
-                                <div class='card-image'>
-                                <img class='image-size' src='$imagem'>
-                                    <a class='btn-floating halfway-fab waves-effect waves-light dark-mode' href='/ProjetoPacECommerce/App/adicionar_produto_carrinho.php?id=$idres'><i class='material-icons'>local_grocery_store</i></a>
-                                </div>
-                                <div class='card-content'>
-                                <span class='text-black'>$nomeres</span>";
+                        <a href='tela_info_produto.php?id=$idres'>
+                            <div class='card-image'>
+                                <img class='image-size' src='$imagemres'>
+                                <a class='btn-floating halfway-fab waves-effect waves-light dark-mode'  href='/ProjetoPacECommerce/App/adicionar_produto_carrinho.php?id=$idres'><i class='material-icons'>local_grocery_store</i></a>
+                            </div>
+                            <div class='card-content'>
+                            <span class='card-title'>$nomeres</span>";
                         if ($precoantigo != null) {
-                            echo "<p class='discount'>De: R$ $precoantigo</p>";
+                            echo "<p class='discount'>R$ $precoantigo</p>";
                         }
                         echo "
-                                    <h5>R$ $precores</h5>
-                                </div>
-                            </a>
+                                <h5>R$ $precores</h5>
+                            </div>
+                        </a>
                         </div>
                     ";
                     }
@@ -192,6 +153,8 @@
 
             ?>
         </section>
+
+       
     </main>
 
     <div id="footer"></div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 04-Dez-2020 às 02:54
+-- Tempo de geração: 10-Dez-2020 às 20:34
 -- Versão do servidor: 10.4.14-MariaDB
 -- versão do PHP: 7.4.10
 
@@ -55,29 +55,9 @@ INSERT INTO `clientes` (`Cliente_ID`, `Cliente_Nome`, `Cliente_Senha`, `Cliente_
 (6, 'Frederico', 'c01fcaf08c742545d5d76992d58775e2', 'fred@', 104072, 0, 'Rua Gothard Kaesemodel', 'Anita Garibaldi', 'Joinville', 'SC', 605, 89203522),
 (7, 'rafael', '81dc9bdb52d04dc20036dbd8313ed055', 'rafael@', 124352, 0, '1adfsadf', 'asdfasd', 'asdfdf', 'SC', 123, 12342134),
 (8, 'Natalia Ertl', '81dc9bdb52d04dc20036dbd8313ed055', 'nataliaertl@', 113798, 0, 'Rua Alfeu Carneiro Lins', 'Iririu', 'Joinville', 'SC', 82, 89227522),
-(9, 'Tais', '81dc9bdb52d04dc20036dbd8313ed055', 'tais@', 432543, 0, 'erdfsgsdg', 'sdfgsdf', 'sdfsfdgf', 'SC', 1243, 21342134);
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `clienteteste`
---
-
-CREATE TABLE `clienteteste` (
-  `Cliente_ID` int(11) NOT NULL,
-  `Cliente_Nome` varchar(100) NOT NULL,
-  `Cliente_Senha` varchar(100) NOT NULL,
-  `Cliente_Email` varchar(100) NOT NULL,
-  `Cliente_CPF` varchar(100) NOT NULL,
-  `Cliente_Telefone` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `clienteteste`
---
-
-INSERT INTO `clienteteste` (`Cliente_ID`, `Cliente_Nome`, `Cliente_Senha`, `Cliente_Email`, `Cliente_CPF`, `Cliente_Telefone`) VALUES
-(4, 'João Artur', '81dc9bdb52d04dc20036dbd8313ed055', 'joao@', '120.765.619-43', '(47) 9 9947-1030');
+(9, 'Tais', '81dc9bdb52d04dc20036dbd8313ed055', 'tais@', 432543, 0, 'erdfsgsdg', 'sdfgsdf', 'sdfsfdgf', 'SC', 1243, 21342134),
+(10, 'suellen teste', '81dc9bdb52d04dc20036dbd8313ed055', 'suellen@teste', 120765, 0, 'Rua Joaquim Nabuco', 'Anita Garibaldi', 'Joinville', 'SC', 81, 89203070),
+(11, 'Joao Teste', 'aa1bf4646de67fd9086cf6c79007026c', 'joao@teste', 120765, 0, 'sadfsadf', 'adfg', 'Joinville', 'SC', 81, 89203590);
 
 -- --------------------------------------------------------
 
@@ -87,13 +67,7 @@ INSERT INTO `clienteteste` (`Cliente_ID`, `Cliente_Nome`, `Cliente_Senha`, `Clie
 
 CREATE TABLE `pedido` (
   `Pedido_ID` int(11) NOT NULL,
-  `Pedido_Preco` float NOT NULL,
-  `Pedido_Entrega_Tipo` varchar(100) NOT NULL,
-  `Pedido_Frete` float NOT NULL,
-  `Pedido_Pagamento_Tipo` varchar(100) NOT NULL,
-  `Pedido_Produtos` int(11) NOT NULL,
-  `Pedido_Cliente` int(11) NOT NULL,
-  `Pedido_Destinatario` varchar(300) NOT NULL,
+  `Pedido_Cliente` varchar(11) NOT NULL,
   `Pedido_Valor_Total` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -111,31 +85,25 @@ CREATE TABLE `produtos` (
   `Prod_Promocao` tinyint(1) NOT NULL,
   `Prod_Quantidade` int(11) NOT NULL,
   `Prod_Preco_Antigo` float DEFAULT NULL,
-  `Url_imagem` text NOT NULL,
   `Pro_Preco_Frete` float NOT NULL,
   `Pro_Peso` float NOT NULL,
   `Pro_Altura` float NOT NULL,
   `Pro_Largura` float NOT NULL,
-  `Pro_Comprimento` float NOT NULL
+  `Pro_Comprimento` float NOT NULL,
+  `Prod_Imagem` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `produtos`
 --
 
-INSERT INTO `produtos` (`Prod_ID`, `Prod_Nome`, `Prod_Descricao`, `Prod_Preco`, `Prod_Promocao`, `Prod_Quantidade`, `Prod_Preco_Antigo`, `Url_imagem`, `Pro_Preco_Frete`, `Pro_Peso`, `Pro_Altura`, `Pro_Largura`, `Pro_Comprimento`) VALUES
-(1, 'Camiseta', '', 19.9, 1, 12, 50, '', 0, 0, 0, 0, 0),
-(2, 'Calça', '', 11.5, 0, 10, NULL, '', 0, 0.5, 20, 20, 20),
-(3, 'Meia', '', 5.65, 0, 10, NULL, '', 0, 0, 0, 0, 0),
-(4, 'ESCADA ELETRICA', 'UMA ESCADA ELETRICA INCRIVEL QUE DAJFHDSFKLHSDGLKAHSDF kjahgkfdkg  adfkjfdaklghf adfkgjdfghlk', 800, 1, 20, NULL, '', 0, 0, 0, 0, 0),
-(5, 'telha', '', 15, 0, 10, NULL, '', 0, 0, 0, 0, 0),
-(6, 'cotonete', '', 20, 0, 5, NULL, '', 0, 0, 0, 0, 0),
-(7, 'Cotonete enorme', '', 25, 0, 10, 100, '', 0, 0, 0, 0, 0),
-(8, 'Betoneira', '', 15, 0, 15, 9000, '', 0, 0, 0, 0, 0),
-(9, 'Delineador Colorido', '', 20, 0, 1, NULL, '', 0, 0, 0, 0, 0),
-(10, 'Latinha', '', 120, 0, 5, NULL, '', 0, 0, 0, 0, 0),
-(12, 'Yasuo', 'O herói mais temido por seus aliados de toda Runeterra.', 1000, 0, 1, NULL, 'https://i.pinimg.com/originals/65/2a/79/652a79805036c5b55d7845037df042a4.jpg', 0, 0, 0, 0, 0),
-(13, 'AWP - Dragon Lore', 'Obra prima.', 7320, 0, 1, NULL, 'https://i.redd.it/h91sil5400e51.png', 0, 0, 0, 0, 0);
+INSERT INTO `produtos` (`Prod_ID`, `Prod_Nome`, `Prod_Descricao`, `Prod_Preco`, `Prod_Promocao`, `Prod_Quantidade`, `Prod_Preco_Antigo`, `Pro_Preco_Frete`, `Pro_Peso`, `Pro_Altura`, `Pro_Largura`, `Pro_Comprimento`, `Prod_Imagem`) VALUES
+(1, 'Camiseta Branca Rose', '', 79, 1, 2, 99, 0, 0, 0, 0, 0, 'https://d26lpennugtm8s.cloudfront.net/stores/001/101/580/products/camiseta-masculina-classic-rose-branca1-68f79b40b6405f4c4315879875226873-1024-1024.jpg'),
+(2, 'Camiseta Preta Basica', '', 79.9, 0, 10, NULL, 0, 0, 0, 0, 0, 'https://47069.cdn.simplo7.net/static/47069/sku/roupas-camiseta-preta-basica-logo-patch--p-1582826230345.jpg'),
+(3, 'Camiseta Vans', '', 99.9, 0, 5, NULL, 0, 0, 0, 0, 0, 'https://d26lpennugtm8s.cloudfront.net/stores/001/035/054/products/camiseta-vans-mc-basic-classic-boys-21-aaccd32e9379a9142f15786833752311-640-0.jpg'),
+(4, 'Camiseta Manga Longa', '', 99.9, 1, 10, 129.9, 0, 0, 0, 0, 0, 'https://47069.cdn.simplo7.net/static/47069/sku/colecao-global-moviment-camiseta-manga-longa-caveira--p-1588775213217.jpg'),
+(5, 'Camiseta Criação de Adão', '', 49.9, 1, 10, 59.9, 0, 0, 0, 0, 0, 'https://22036.cdn.simplo7.net/static/22036/sku/camisetas-nerd-camisetas-obras-de-arte-camiseta-criacao-de-adao-michelangelo--p-1570197119476.jpg'),
+(6, 'Tênis Nike Quest', '', 199.9, 0, 4, NULL, 0, 0, 0, 0, 0, 'https://static.netshoes.com.br/produtos/tenis-nike-quest-2-masculino/26/HZM-1743-026/HZM-1743-026_zoom1.jpg?ts=1562156633');
 
 -- --------------------------------------------------------
 
@@ -144,19 +112,19 @@ INSERT INTO `produtos` (`Prod_ID`, `Prod_Nome`, `Prod_Descricao`, `Prod_Preco`, 
 --
 
 CREATE TABLE `produtos_pedido` (
-  `Cod_Link` int(11) NOT NULL,
-  `Cod_Cliente` int(11) NOT NULL,
-  `Cod_Pedido` int(11) NOT NULL,
-  `Cod_Produtos` int(11) NOT NULL
+  `id_prod_pedido` int(11) NOT NULL,
+  `email_cliente` varchar(11) NOT NULL,
+  `cod_prod` int(11) NOT NULL,
+  `qtd_prod` int(11) NOT NULL,
+  `prod_finalizado` varchar(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `produtos_pedido`
 --
 
-INSERT INTO `produtos_pedido` (`Cod_Link`, `Cod_Cliente`, `Cod_Pedido`, `Cod_Produtos`) VALUES
-(1, 1, 1, 2323),
-(1, 1, 1, 2424);
+INSERT INTO `produtos_pedido` (`id_prod_pedido`, `email_cliente`, `cod_prod`, `qtd_prod`, `prod_finalizado`) VALUES
+(46, 'joao@', 1, 2, '0');
 
 --
 -- Índices para tabelas despejadas
@@ -166,12 +134,6 @@ INSERT INTO `produtos_pedido` (`Cod_Link`, `Cod_Cliente`, `Cod_Pedido`, `Cod_Pro
 -- Índices para tabela `clientes`
 --
 ALTER TABLE `clientes`
-  ADD PRIMARY KEY (`Cliente_ID`);
-
---
--- Índices para tabela `clienteteste`
---
-ALTER TABLE `clienteteste`
   ADD PRIMARY KEY (`Cliente_ID`);
 
 --
@@ -190,7 +152,7 @@ ALTER TABLE `produtos`
 -- Índices para tabela `produtos_pedido`
 --
 ALTER TABLE `produtos_pedido`
-  ADD PRIMARY KEY (`Cod_Link`,`Cod_Cliente`,`Cod_Pedido`,`Cod_Produtos`);
+  ADD PRIMARY KEY (`id_prod_pedido`,`email_cliente`,`cod_prod`,`qtd_prod`);
 
 --
 -- AUTO_INCREMENT de tabelas despejadas
@@ -200,25 +162,25 @@ ALTER TABLE `produtos_pedido`
 -- AUTO_INCREMENT de tabela `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `Cliente_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT de tabela `clienteteste`
---
-ALTER TABLE `clienteteste`
-  MODIFY `Cliente_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Cliente_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de tabela `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `Pedido_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Pedido_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `Prod_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `Prod_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1424;
+
+--
+-- AUTO_INCREMENT de tabela `produtos_pedido`
+--
+ALTER TABLE `produtos_pedido`
+  MODIFY `id_prod_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

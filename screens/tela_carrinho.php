@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link type="text/css" rel="stylesheet" href="css/materialize/css/materialize.min.css" media="screen,projection" />
     <link rel="stylesheet" href="css/tela_carrinho.css">
+    <link rel="stylesheet" href="css/global.css">
     <title>Informações Produto</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
@@ -19,140 +20,108 @@
         $('.sidenav').sidenav();
         $('.fixed-action-btn').floatingActionButton();
     });
+
+    $(function() {
+        $("#nav-bar").load("./components/navbar.php");
+    });
 </script>
 
 <body>
     <?php
     session_start();
     include '../Database/conexao.php';
-    
-if (isset($_SESSION['login'])) {
-    $var = $_SESSION['login'];
-    $sql = "SELECT Cliente_Nome FROM clientes WHERE Cliente_Email = '$var'";
-    $condicao = mysqli_query($con, $sql);
-    if (mysqli_num_rows($condicao) > 0) {
-        $registro = mysqli_fetch_array($condicao);
-        $nomeCliente = $registro['Cliente_Nome'];
-    }
-    echo "
-        <nav class='nav-extended'>
-            <div class='nav-wrapper'>
-                <a href='../index.php' class='brand-logo'>Chosen</a>
+    if (isset($_SESSION['login'])) {
+        echo"
+        <div id='nav-bar'></div>
 
-                <a href='#' class='sidenav-trigger' data-target='mobile-nav'>
-                    <i class='material-icons'>menu</i>
-                </a>
-
-                <ul id='nav-mobile' class='right hide-on-med-and-down'>
-                    <li><a href='telaprodutos.php'>Produtos</a></li>
-                    <li><a href='telapromocoes.php'>Promoção</a></li>
-                    <li>$nomeCliente</li>
-                    <li><a id='logout' href='../App/logout.php'><i class='material-icons'>input</i></a></li>
-    ";
-} else {
-    echo "
-    <nav class='nav-extended'>
-        <div class='nav-wrapper'>
-            <a href='../index.php' class='brand-logo'>Chosen</a>
-
-            <a href='#' class='sidenav-trigger' data-target='mobile-nav'>
-                <i class='material-icons'>menu</i>
-            </a>
-
-            <ul id='nav-mobile' class='right hide-on-med-and-down'>
-                <li><a href='telaprodutos.php'>Produtos</a></li>
-                <li><a href='telapromocoes.php'>Promoção</a></li>
-                <li><a id='cadastrar' href='telacadastro.php'>Cadastrar-se</a></li>
-                <li><a id='entrar' href='telalogin.php'>Entrar</a></li>
-    ";
-}echo "
-                <li><a href='tela_carrinho.php'><i class='material-icons'>local_grocery_store</i></a></li>
-            </ul>
-        </div>
-    </nav>
-";
-?>
-
-
-    <ul class="sidenav" id="mobile-nav">
-        <li><a href="#"><i class="material-icons">local_grocery_store</i>Produtos</a></li>
-        <li><a href="#"><i class="material-icons">local_offer</i>Promocoes</a></li>
-        <li><a href="#"><i class="material-icons">whatshot</i>Lançamentos</a></li>
-        <li><a href="#"><i class="material-icons">search</i>Pesquisa</a></li>
-    </ul>
-
-    <div class="fixed-action-btn mobile">
-        <a class="btn-floating btn-large dark-mode">
-            <i class="large material-icons">whatshot</i>
-        </a>
-        <ul>
-            <li><a class="btn-floating dark-mode"><i class="material-icons">local_grocery_store</i></a></li>
-            <li><a class="btn-floating dark-mode darken-1"><i class="material-icons">local_offer</i></a></li>
+        <ul class='sidenav' id='mobile-nav'>
+            <h4 class='title'>Chosen</h4>
+            <li><a href='/ProjetoPacECommerce/index.php'><i class='material-icons'>home</i>Início</a></li>
+            <li><a href='/ProjetoPacECommerce/Screens/telaprodutos.php'><i class='material-icons'>local_grocery_store</i>Produtos</a></li>
+            <li><a href='/ProjetoPacECommerce/Screens/telapromocoes.php'><i class='material-icons'>local_offer</i>Promocoes</a></li>
+            <li><a href='/ProjetoPacECommerce/Screens/telalancamentos.php'><i class='material-icons'>whatshot</i>Lançamentos</a></li>
+            ";
+            if (isset($_SESSION['login'])) {
+                $var = $_SESSION['login'];
+                $sql = "SELECT Cliente_Nome FROM clientes WHERE Cliente_Email = '$var'";
+                $condicao = mysqli_query($con, $sql);
+                if (mysqli_num_rows($condicao) > 0) {
+                    $registro = mysqli_fetch_array($condicao);
+                    $nomeCliente = $registro['Cliente_Nome'];
+                }
+                echo "
+                    <li><a href='/ProjetoPacECommerce/Screens/tela_carrinho.php'><i class='material-icons'>local_grocery_store</i>Carrinho</a></li>
+                    <li><a id='logout' href='/ProjetoPacECommerce/App/logout.php'><i class='material-icons'>input</i>Sair</a></li>";
+            } else {
+                echo "
+                            <li><a id='cadastrar' href='/ProjetoPacECommerce/Screens/telacadastro.php'><i class='material-icons'>person_add</i>Cadastrar-se</a></li>
+                            <li><a id='entrar' href='/ProjetoPacECommerce/Screens/telalogin.php'><i class='material-icons'>input</i>Entrar</a></li>
+                            ";
+            }
+         echo"   
         </ul>
-    </div>
+    
+        <main>
+            <div class='container'>";
+                
+                $total = 0;
+                $sql = "SELECT * FROM produtos_pedido WHERE email_cliente = '$var' and prod_finalizado = '0'";
+                $condicao = mysqli_query($con, $sql);
+                if (mysqli_num_rows($condicao) > 0) {
+                    echo "<div class='list-products2'>";
+                    while ($registro = mysqli_fetch_array($condicao)) {
+                        $idres = $registro['cod_prod'];
+                        $qtdres = $registro['qtd_prod'];
+                        $searchprod = "SELECT * FROM produtos where Prod_ID = '$idres'";
+                        $condicaoProds = mysqli_query($con, $searchprod);
+                        if (mysqli_num_rows($condicaoProds) > 0) {
+                            while ($registroProds = mysqli_fetch_array($condicaoProds)) {
+                                $precoantigo = $registroProds['Prod_Preco_Antigo'];
+                                $nomeres = $registroProds['Prod_Nome'];
+                                $precores = $registroProds['Prod_Preco'];
+                                $imagem = $registroProds['Prod_Imagem'];
+                                $subtotal = $precores * $qtdres;
+                                $total += $subtotal;
+                                echo "
+                                    <div class='item-complete'>
+                                        <div class='itens'>
+                                            <div class='card card-size'>
+                                                <div class='card-image'>
+                                                <img src='$imagem'>
+                                                </div>
+                                            </div>
+                                            <div class='info'>
+                                                <h6><b>Nome:</b> $nomeres</h6>
+                                                <h6><b>Preço:</b> R$ $precores</h6>
+                                                <h6><b>Quantidade:</b> $qtdres</h6>
+                                            </div>
+                                            <div class='remove'>
+                                                <button class='waves-effect waves-light btn-small red lighten-2'><a href='/ProjetoPacECommerce/App/remover_produto_carrinho.php?id=$idres'><i class='material-icons'>delete</i></a></button>
+                                            </div>
+                                        </div>
+                                        <h5><b>Subtotal: </b>R$ $subtotal</h5>
+                                    </div>
+                                    <div class='divider'></div>";
+                            }
+                        }
+                    }
+                }
+             echo"   
+            </div>
+        </main>
+    
+        <div class='container2'>
+                <h4 class='total'>Total dos Itens: <b>R$ $total</b></h4>
+                <button class='waves-effect waves-light btn-large dark-mode'><a href='/ProjetoPacECommerce/App/finalizar_pedido.php?preco=$total'>Finalizar a Compra</a></button>
+            
+        </div>";
+    $var = $_SESSION['login'];
+    }
+    else{
+        echo"Faça login primeiro arrombado";
+    }
+    ?>
 
-    <main>
-        <div class="container">
-            <div class="item-complete">
-                <div class="itens">
-                    <div class='card card-size image'>
-                        <div class='card-image'>
-                            <img src='https://picsum.photos/500'>
-                        </div>
-                    </div>
-                    <div class="info">
-                        <h6><b>Nome:</b> Teste Produto</h6>
-                        <h6><b>Preço:</b> R$ 230,00</h6>
-                        <div class="adicionarquantidade">
-                            <h6 class="space-count increase-count">-</h6>
-                            <h6 class="space-count"><b>2</b></h6>
-                            <h6 class="space-count increase-count">+</6>
-                        </div>
-                    </div>
-                </div>
-                <h5><b>Subtotal: </b>R$ 460,00</h5>
-            </div>
-            <div class="divider"></div>
-            <div class="item-complete">
-                <div class="itens">
-                    <div class='card card-size image'>
-                        <div class='card-image'>
-                            <img src='https://picsum.photos/500'>
-                        </div>
-                    </div>
-                    <div class="info">
-                        <h6><b>Nome:</b> Teste Produto</h6>
-                        <h6><b>Preço:</b> R$ 230,00</h6>
-                        <div class="adicionarquantidade">
-                            <h6 class="space-count increase-count">-</h6>
-                            <h6 class="space-count"><b>5</b></h6>
-                            <h6 class="space-count increase-count">+</6>
-                        </div>
-                    </div>
-                </div>
-                <h5><b>Subtotal: </b>R$ 1.150,00</h5>
-            </div>
-        </div>
-        <div class="calccep mobile">
-            <div class='input-field col s6'>
-                <input id='quantity' type='text' class='validate'>
-                <label for='quantity'>CEP</label>
-            </div>
-        </div>
-        <div class="bgwhite mobile">
-            <h4 class="total">Total dos Itens: <b>R$ 1.610,00</b></h4>
-            <button class='waves-effect waves-light btn-small dark-mode'>Continuar a Compra</button>
-        </div>
-
-        <div class="container2">
-            <div class='input-field col s6'>
-                <input id='quantity' type='text' class='validate'>
-                <label for='quantity'>CEP</label>
-            </div>
-            <h4 class="total">Total dos Itens: <b>R$ 1.610,00</b></h4>
-            <button class='waves-effect waves-light btn-small dark-mode'>Continuar a Compra</button>
-        </div>
-    </main>
 
 </body>
 

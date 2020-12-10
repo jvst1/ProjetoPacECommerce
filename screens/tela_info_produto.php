@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link type="text/css" rel="stylesheet" href="css/materialize/css/materialize.min.css" media="screen,projection" />
     <link rel="stylesheet" href="css/info_produto_style.css">
+    <link rel="stylesheet" href="css/global.css">
     <title>Informações Produto</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
@@ -19,76 +20,46 @@
         $('.sidenav').sidenav();
         $('.fixed-action-btn').floatingActionButton();
     });
+
+    $(function() {
+        $("#nav-bar").load("./components/navbar.php");
+    });
 </script>
 
 <body>
     <?php
     session_start();
     include '../Database/conexao.php';
-    
-if (isset($_SESSION['login'])) {
-    $var = $_SESSION['login'];
-    $sql = "SELECT Cliente_Nome FROM clientes WHERE Cliente_Email = '$var'";
-    $condicao = mysqli_query($con, $sql);
-    if (mysqli_num_rows($condicao) > 0) {
-        $registro = mysqli_fetch_array($condicao);
-        $nomeCliente = $registro['Cliente_Nome'];
-    }
-    echo "
-        <nav class='nav-extended'>
-            <div class='nav-wrapper'>
-                <a href='index.php' class='brand-logo'>Chosen</a>
+    ?>
 
-                <a href='#' class='sidenav-trigger' data-target='mobile-nav'>
-                    <i class='material-icons'>menu</i>
-                </a>
-
-                <ul id='nav-mobile' class='right hide-on-med-and-down'>
-                    <li><a href='telaprodutos.php'>Produtos</a></li>
-                    <li><a href='telapromocoes.php'>Promoção</a></li>
-                    <li>$nomeCliente</li>
-                    <li><a id='logout' href='../App/logout.php'><i class='material-icons'>input</i></a></li>
-    ";
-} else {
-    echo "
-    <nav class='nav-extended'>
-        <div class='nav-wrapper'>
-            <a href='index.php' class='brand-logo'>Chosen</a>
-
-            <a href='#' class='sidenav-trigger' data-target='mobile-nav'>
-                <i class='material-icons'>menu</i>
-            </a>
-
-            <ul id='nav-mobile' class='right hide-on-med-and-down'>
-                <li><a href='telaprodutos.php'>Produtos</a></li>
-                <li><a href='telapromocoes.php'>Promoção</a></li>
-                <li><a id='cadastrar' href='telacadastro.php'>Cadastrar-se</a></li>
-                <li><a id='entrar' href='telalogin.php'>Entrar</a></li>
-    ";
-}echo "
-                <li><a href='tela_carrinho.php'><i class='material-icons'>local_grocery_store</i></a></li>
-            </ul>
-        </div>
-    </nav>
-";
-?>
+    <div id="nav-bar"></div>
 
     <ul class="sidenav" id="mobile-nav">
-        <li><a href="#"><i class="material-icons">local_grocery_store</i>Produtos</a></li>
-        <li><a href="#"><i class="material-icons">local_offer</i>Promocoes</a></li>
-        <li><a href="#"><i class="material-icons">whatshot</i>Lançamentos</a></li>
-        <li><a href="#"><i class="material-icons">search</i>Pesquisa</a></li>
+        <h4 class="title">Chosen</h4>
+        <li><a href="/ProjetoPacECommerce/index.php"><i class="material-icons">home</i>Início</a></li>
+        <li><a href="/ProjetoPacECommerce/Screens/telaprodutos.php"><i class="material-icons">local_grocery_store</i>Produtos</a></li>
+        <li><a href="/ProjetoPacECommerce/Screens/telapromocoes.php"><i class="material-icons">local_offer</i>Promocoes</a></li>
+        <li><a href="/ProjetoPacECommerce/Screens/telalancamentos.php"><i class="material-icons">whatshot</i>Lançamentos</a></li>
+        <?php
+        if (isset($_SESSION['login'])) {
+            $var = $_SESSION['login'];
+            $sql = "SELECT Cliente_Nome FROM clientes WHERE Cliente_Email = '$var'";
+            $condicao = mysqli_query($con, $sql);
+            if (mysqli_num_rows($condicao) > 0) {
+                $registro = mysqli_fetch_array($condicao);
+                $nomeCliente = $registro['Cliente_Nome'];
+            }
+            echo "
+                <li><a href='/ProjetoPacECommerce/Screens/tela_carrinho.php'><i class='material-icons'>local_grocery_store</i>Carrinho</a></li>
+                <li><a id='logout' href='/ProjetoPacECommerce/App/logout.php'><i class='material-icons'>input</i>Sair</a></li>";
+        } else {
+            echo "
+                        <li><a id='cadastrar' href='/ProjetoPacECommerce/Screens/telacadastro.php'><i class='material-icons'>person_add</i>Cadastrar-se</a></li>
+                        <li><a id='entrar' href='/ProjetoPacECommerce/Screens/telalogin.php'><i class='material-icons'>input</i>Entrar</a></li>
+                        ";
+        }
+        ?>
     </ul>
-
-    <div class="fixed-action-btn mobile">
-        <a class="btn-floating btn-large dark-mode">
-            <i class="large material-icons">whatshot</i>
-        </a>
-        <ul>
-            <li><a class="btn-floating dark-mode"><i class="material-icons">local_grocery_store</i></a></li>
-            <li><a class="btn-floating dark-mode darken-1"><i class="material-icons">local_offer</i></a></li>
-        </ul>
-    </div>
 
     <?php
     $var = htmlspecialchars($_GET['id']);
@@ -97,20 +68,17 @@ if (isset($_SESSION['login'])) {
     if (mysqli_num_rows($condicao) > 0) {
         $registro = mysqli_fetch_array($condicao);
         $nomeres = $registro['Prod_Nome'];
+        $imagemres = $registro['Prod_Imagem'];
+        $precoantigo = $registro['Prod_Preco_Antigo'];
         $descres = $registro['Prod_Descricao'];
         $precores = $registro['Prod_Preco'];
         $qtdres = $registro['Prod_Quantidade'];
-        $imagem = $registro['Url_imagem'];  
     }
-    if(empty($imagem)){
-        $imagem = "https://picsum.photos/600";
-    }
-    
     echo "
         <div class='spacing'>
             <div class='card card-size'>
                 <div class='card-image'>
-                    <img src='$imagem'>
+                <img src='$imagemres'>
                 </div>
             </div>
 
@@ -118,27 +86,32 @@ if (isset($_SESSION['login'])) {
                 <h2 class='desktop'>$nomeres</h2>
                 
                 <div class='card-content'>
-                    <div class='flex-items'>
-                        <p class='discount'>R$ 250,99</p>
+                    <div class='flex-items'>";
+                    if ($precoantigo != null) {
+                        echo "<p class='discount'>De: R$ $precoantigo</p>";
+                    }
+                    echo"
                         <p class='quantity'>Quantidade Disponível: $qtdres</p>
                     </div>
                     <h5>Por: $precores</h5>
                     <h6>Em até 12x sem juros</h6>
                 </div>
 
+                <form method='post' action='/ProjetoPacECommerce/App/adicionar_produto_carrinho.php?id=$var'>
                 <div class='addcart'>
                     <div class='input-field col s6'>
-                        <input id='quantity' type='text' class='validate'>
+                        <input name='quantity' id='quantity' type='text' class='validate'>
                         <label for='quantity'>Quantidade</label>
                     </div>
-                    <button class='waves-effect waves-light btn-small dark-mode'>Adicionar ao Carrinho</button>
+                    <button class='waves-effect waves-light btn-small dark-mode' type='submit'>Adicionar ao Carrinho</button>
                 </div>
+                </form>
                 <br>
                 <hr>
                 <h4>Descrição</h4>
                 <h5 class='desc'>$descres</h5>
             </div>
-        </div>"
+        </div>";
     ?>
 
 </body>

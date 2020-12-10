@@ -1,0 +1,41 @@
+<script>
+    function sendEmail() {
+        var body = document.getElementById('message').value;
+        window.open('mailto:suporte@chosen.com.br?subject=Contato ChosenECommerce&body=' + body + '');
+    }
+</script>
+
+<footer class="page-footer dark-mode">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Contate a loja através do e-mail</h5>
+                <p class="grey-text text-lighten-4">suporte@chosen.com.br</p>
+                <form action="#">
+                    <br>
+                    <textarea class="message" id="message" rows="10" cols="30"
+                        placeholder="Informe sua mensagem aqui"></textarea>
+                    <br><br>
+                    <input class="btn light-mode btn-hover" type="button" value="Enviar" onClick="sendEmail();" />
+                </form>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h4 class="white-text">Desenvolvedores</h4>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="https://github.com/matheustambosi">Matheus Tambosi</a>
+                    </li>
+                    <li><a class="grey-text text-lighten-3" href="https://github.com/JoaooArtur">João Belli</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Frederico Stein</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Gustavo Bosco</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">João Tomio</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Vitor Adriel</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © 2020 Senaizada ECommerce
+        </div>
+    </div>
+</footer>

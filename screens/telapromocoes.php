@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link type="text/css" rel="stylesheet" href="css/materialize/css/materialize.min.css" media="screen,projection" />
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/global.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -19,65 +20,49 @@
         $('.sidenav').sidenav();
         $('.fixed-action-btn').floatingActionButton();
     });
+
+    $(function() {
+        $("#nav-bar").load("./components/navbar.php");
+    });
+
+    $(function() {
+        $("#footer").load("./components/footer.html");
+    });
 </script>
 
 <body>
     <?php
     session_start();
     include '../Database/conexao.php';
-    
-if (isset($_SESSION['login'])) {
-    $var = $_SESSION['login'];
-    $sql = "SELECT Cliente_Nome FROM clientes WHERE Cliente_Email = '$var'";
-    $condicao = mysqli_query($con, $sql);
-    if (mysqli_num_rows($condicao) > 0) {
-        $registro = mysqli_fetch_array($condicao);
-        $nomeCliente = $registro['Cliente_Nome'];
-    }
-    echo "
-        <nav class='nav-extended'>
-            <div class='nav-wrapper'>
-                <a href='../index.php' class='brand-logo'>Chosen</a>
+    ?>
 
-                <a href='#' class='sidenav-trigger' data-target='mobile-nav'>
-                    <i class='material-icons'>menu</i>
-                </a>
+    <div id="nav-bar"></div>
 
-                <ul id='nav-mobile' class='right hide-on-med-and-down'>
-                    <li><a href='telaprodutos.php'>Produtos</a></li>
-                    <li><a href='telapromocoes.php'>Promoção</a></li>
-                    <li>$nomeCliente</li>
-                    <li><a id='logout' href='../App/logout.php'><i class='material-icons'>input</i></a></li>
-    ";
-} else {
-    echo "
-    <nav class='nav-extended'>
-        <div class='nav-wrapper'>
-            <a href='../index.php' class='brand-logo'>Chosen</a>
-
-            <a href='#' class='sidenav-trigger' data-target='mobile-nav'>
-                <i class='material-icons'>menu</i>
-            </a>
-
-            <ul id='nav-mobile' class='right hide-on-med-and-down'>
-                <li><a href='telaprodutos.php'>Produtos</a></li>
-                <li><a href='telapromocoes.php'>Promoção</a></li>
-                <li><a id='cadastrar' href='telacadastro.php'>Cadastrar-se</a></li>
-                <li><a id='entrar' href='telalogin.php'>Entrar</a></li>
-    ";
-}echo "
-                <li><a href='tela_carrinho.php'><i class='material-icons'>local_grocery_store</i></a></li>
-            </ul>
-        </div>
-    </nav>
-";
-?>
-    
     <ul class="sidenav" id="mobile-nav">
-        <li><a href="#"><i class="material-icons">local_grocery_store</i>Produtos</a></li>
-        <li><a href="#"><i class="material-icons">local_offer</i>Promocoes</a></li>
-        <li><a href="#"><i class="material-icons">whatshot</i>Lançamentos</a></li>
-        <li><a href="#"><i class="material-icons">search</i>Pesquisa</a></li>
+        <h4 class="title">Chosen</h4>
+        <li><a href="/ProjetoPacECommerce/index.php"><i class="material-icons">home</i>Início</a></li>
+        <li><a href="/ProjetoPacECommerce/Screens/telaprodutos.php"><i class="material-icons">local_grocery_store</i>Produtos</a></li>
+        <li><a href="/ProjetoPacECommerce/Screens/telapromocoes.php"><i class="material-icons">local_offer</i>Promocoes</a></li>
+        <li><a href="/ProjetoPacECommerce/Screens/telalancamentos.php"><i class="material-icons">whatshot</i>Lançamentos</a></li>
+        <?php
+        if (isset($_SESSION['login'])) {
+            $var = $_SESSION['login'];
+            $sql = "SELECT Cliente_Nome FROM clientes WHERE Cliente_Email = '$var'";
+            $condicao = mysqli_query($con, $sql);
+            if (mysqli_num_rows($condicao) > 0) {
+                $registro = mysqli_fetch_array($condicao);
+                $nomeCliente = $registro['Cliente_Nome'];
+            }
+            echo "
+                <li><a href='/ProjetoPacECommerce/Screens/tela_carrinho.php'><i class='material-icons'>local_grocery_store</i>Carrinho</a></li>
+                <li><a id='logout' href='/ProjetoPacECommerce/App/logout.php'><i class='material-icons'>input</i>Sair</a></li>";
+        } else {
+            echo "
+                        <li><a id='cadastrar' href='/ProjetoPacECommerce/Screens/telacadastro.php'><i class='material-icons'>person_add</i>Cadastrar-se</a></li>
+                        <li><a id='entrar' href='/ProjetoPacECommerce/Screens/telalogin.php'><i class='material-icons'>input</i>Entrar</a></li>
+                        ";
+        }
+        ?>
     </ul>
 
     <main>
@@ -91,7 +76,7 @@ if (isset($_SESSION['login'])) {
             </form>
         </section>
         <section class="second-page">
-            <h2 class="product-text">Produtos</h2>
+            <h2 class="product-text">Promoções</h2>
             <?php
 
             if (isset($_GET['pesquisa'])) {
@@ -103,6 +88,7 @@ if (isset($_SESSION['login'])) {
                     while ($registro = mysqli_fetch_array($resultado_ferramenta)) {
                         $idres = $registro['Prod_ID'];
                         $_SESSION['id'] = $idres;
+                        $imagemres = $registro['Prod_Imagem'];
                         $precoantigo = $registro['Prod_Preco_Antigo'];
                         $nomeres = $registro['Prod_Nome'];
                         $precores = $registro['Prod_Preco'];
@@ -111,11 +97,11 @@ if (isset($_SESSION['login'])) {
                 <div class='card spacing card-size'>
                 <a href='tela_info_produto.php?id=$idres'>
                     <div class='card-image'>
-                        <img src='https://picsum.photos/600'>
-                        <span class='card-title'>$nomeres</span>
-                        <a class='btn-floating halfway-fab waves-effect waves-light dark-mode'><i class='material-icons'>local_grocery_store</i></a>
+                        <img class='image-size' src='$imagemres'>
+                        <a class='btn-floating halfway-fab waves-effect waves-light dark-mode'  href='/ProjetoPacECommerce/App/adicionar_produto_carrinho.php?id=$idres'><i class='material-icons'>local_grocery_store</i></a>
                     </div>
-                    <div class='card-content'>";
+                    <div class='card-content'>
+                    <span class='text-black'>$nomeres</span>";
                         if ($precoantigo != null) {
                             echo "<p class='discount'>R$ $precoantigo</p>";
                         }
@@ -137,6 +123,7 @@ if (isset($_SESSION['login'])) {
                     while ($registro = mysqli_fetch_array($condicao)) {
                         $idres = $registro['Prod_ID'];
                         $_SESSION['id'] = $idres;
+                        $imagemres = $registro['Prod_Imagem'];
                         $precoantigo = $registro['Prod_Preco_Antigo'];
                         $nomeres = $registro['Prod_Nome'];
                         $precores = $registro['Prod_Preco'];
@@ -145,11 +132,11 @@ if (isset($_SESSION['login'])) {
                         <div id='card' class='card spacing card-size'>
                         <a href='tela_info_produto.php?id=$idres'>
                             <div class='card-image'>
-                                <img src='https://picsum.photos/600'>
-                                <span class='card-title'>$nomeres</span>
-                                <a class='btn-floating halfway-fab waves-effect waves-light dark-mode'><i class='material-icons'>local_grocery_store</i></a>
+                                <img class='image-size' src='$imagemres'>
+                                <a class='btn-floating halfway-fab waves-effect waves-light dark-mode'  href='/ProjetoPacECommerce/App/adicionar_produto_carrinho.php?id=$idres'><i class='material-icons'>local_grocery_store</i></a>
                             </div>
-                            <div class='card-content'>";
+                            <div class='card-content'>
+                            <span class='text-black'>$nomeres</span>";
                         if ($precoantigo != null) {
                             echo "<p class='discount'>R$ $precoantigo</p>";
                         }
@@ -167,49 +154,10 @@ if (isset($_SESSION['login'])) {
             ?>
         </section>
 
-        <div class="fixed-action-btn">
-            <a class="btn-floating btn-large dark-mode">
-                <i class="large material-icons">whatshot</i>
-            </a>
-            <ul>
-                <li><a class="btn-floating dark-mode"><i class="material-icons">local_grocery_store</i></a></li>
-                <li><a class="btn-floating dark-mode darken-1"><i class="material-icons">local_offer</i></a></li>
-            </ul>
-        </div>
+        
     </main>
 
-    <footer class="page-footer dark-mode">
-        <div class="container">
-            <div class="row">
-                <div class="col l6 s12">
-                    <h5 class="white-text">Contate a loja através do e-mail</h5>
-                    <p class="grey-text text-lighten-4">suporte@gmail.com</p>
-                    <form action="#">
-                        <br>
-                        <textarea name="message" rows="10" cols="30" placeholder="Informe sua mensagem aqui"></textarea>
-                        <br><br>
-                        <input class="btn light-mode btn-hover" type="submit" />
-                    </form>
-                </div>
-                <div class="col l4 offset-l2 s12">
-                    <h4 class="white-text">Desenvolvedores</h4>
-                    <ul>
-                        <li><a class="grey-text text-lighten-3" href="#!">Frederico Stein</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Gustavo Bosco</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Matheus Tambosi</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">João Tomio</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">João Belli</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Vitor Adriel</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="footer-copyright">
-            <div class="container">
-                © 2020 Senaizada ECommerce
-            </div>
-        </div>
-    </footer>
+    <div id="footer"></div>
 
 </body>
 

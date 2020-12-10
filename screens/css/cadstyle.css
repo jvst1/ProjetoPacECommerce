@@ -1,26 +1,3 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
-:root {
-    --main-bg-color: #292C35;
-}
-
-.dark-mode {
-    background-color: var(--main-bg-color);
-}
-
-.dark-mode:hover {
-    background-color: var(--main-bg-color);
-}
-
-body {
-    background-image: url("../images/background.jpg");
-}
-
 .content {
     display: flex;
     align-items: center;
